@@ -6,18 +6,18 @@ import ModeToggle from './ModeToggle';
 
 const Header = () => {
 	return (
-		<header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-			<nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+		<header className="sticky top-0 flex h-16 items-center md:justify-center gap-4 border-b bg-background px-4 md:px-6">
+			<nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:justify-between w-full md:gap-5 md:text-sm lg:gap-6">
 				<Link
 					to="/"
 					className="flex items-center gap-2 text-lg font-semibold md:text-base"
 				>
 					<Package2 className="h-6 w-6" />
-					<span className="sr-only">Acme Inc</span>
+					<span>Ассистент студента</span>
 				</Link>
 				<Link
 					to="/places"
-					className="text-foreground transition-colors hover:text-foreground"
+					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
 					Места рядом
 				</Link>
@@ -45,6 +45,7 @@ const Header = () => {
 				>
 					Подбор программ доп. образования
 				</Link>
+        <ModeToggle />
 			</nav>
 			<Sheet>
 				<SheetTrigger asChild>
@@ -60,7 +61,7 @@ const Header = () => {
 							className="flex items-center gap-2 text-lg font-semibold"
 						>
 							<Package2 className="h-6 w-6" />
-							<span className="sr-only">Acme Inc</span>
+							<span>Ассистент студента</span>
 						</Link>
 						<Link to="/" className="hover:text-foreground">
 							Места рядом
@@ -92,7 +93,6 @@ const Header = () => {
 					</nav>
 				</SheetContent>
 			</Sheet>
-      <ModeToggle />
 		</header>
 	);
 };
