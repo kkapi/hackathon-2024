@@ -60,13 +60,13 @@ public class BeautifulPlace {
 
         public void inArray(){
             this.coordinates = new double[2];
-            coordinates[0] = lat;
-            coordinates[1] = lon;
+            coordinates[0] = lon;
+            coordinates[1] = lat;
         }
 
         public void outArray(){
-            lat = coordinates[0];
-            lon = coordinates[1];
+            lon = coordinates[0];
+            lat = coordinates[1];
         }
 
         public BeautifulPlace() {

@@ -79,13 +79,13 @@ public class Attractions {
 
     public void inArray(){
         this.coord = new double[2];
-        coord[0] = lat;
-        coord[1] = lon;
+        coord[0] = lon;
+        coord[1] = lat;
     }
 
     public void outArray(){
-        lat = coord[0];
-        lon = coord[1];
+        lon = coord[0];
+        lat = coord[1];
     }
 
     public Attractions() {

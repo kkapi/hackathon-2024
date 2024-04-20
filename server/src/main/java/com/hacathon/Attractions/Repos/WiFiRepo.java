@@ -16,11 +16,4 @@ public interface WiFiRepo extends JpaRepository<WiFi, Long> {
             "WHERE sqrt(((t.lat - :latitude)*111153)*((t.lat - :latitude)*111153) + ((t.lon - :longitude)*62555)*((t.lon - :longitude)*62555)) < :radius " +
             "order by sqrt(((t.lat - :latitude)*111153)*((t.lat - :latitude)*111153) + ((t.lon - :longitude)*62555)*((t.lon - :longitude)*62555))")
     List<WiFi> findNeedPoint(@Param("longitude") double longitude, @Param("latitude") double latitude, @Param("radius") double radius);
-
-
-
-    @Query(value = "SELECT t " +
-            "FROM WiFi t " +
-            "order by sqrt(((t.lat - :latitude)*111153)*((t.lat - :latitude)*111153) + ((t.lon - :longitude)*62555)*((t.lon - :longitude)*62555))")
-    List<WiFi> findFirstNeedPoint(@Param("longitude") double longitude, @Param("latitude") double latitude);
 }
