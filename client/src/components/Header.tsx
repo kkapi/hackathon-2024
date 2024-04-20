@@ -7,10 +7,10 @@ import ModeToggle from './ModeToggle';
 const Header = () => {
 	return (
 		<header className="sticky top-0 z-50 w-full flex h-16 items-center md:justify-center gap-4 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 md:px-6">
-			<nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:justify-between w-full md:gap-5 md:text-sm lg:gap-6">
+			<nav className="hidden flex-col gap-6 font-medium md:flex md:flex-row md:items-center md:justify-between w-full md:gap-5 md:text-base lg:gap-6">
 				<Link
 					to="/"
-					className="flex items-center gap-2 text-lg font-semibold md:text-base"
+					className="flex items-center gap-2 font-semibold md:text-base"
 				>
 					<NotebookPen className="h-6 w-6" />
 					<span>Ассистент студента</span>

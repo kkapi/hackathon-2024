@@ -4,15 +4,10 @@ import { cn } from '@/lib/utils';
 import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { useRef } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Footer from '@/components/Footer';
 
 const HomePage = () => {
-  const myRef = useRef(null);
-
-  const scrollToElement = () => {
-    myRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
 	return (
 		<>
 			<Header />
@@ -44,54 +39,76 @@ const HomePage = () => {
 							'flex w-full items-center justify-center space-x-4 py-4 md:pb-10'
 						)}
 					>
-						<Button onClick={scrollToElement}>Начать</Button>
+						<Button onClick={() => {}}>Начать</Button>
 						<Button variant="outline">GitHub</Button>
 					</div>
 				</section>
 
 				<Separator />
 
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div ref={myRef}>AMOGUS</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-        <div>TEST</div>
-      
+				<div className="mt-12 grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-2">
+					<Card>
+						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+							<CardTitle className="text-xl font-medium">
+								Места рядом
+							</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<div className="text-2xl font-bold">$45,231.89</div>
+							<p className="text-xs text-muted-foreground">
+								+20.1% from last month
+							</p>
+						</CardContent>
+					</Card>
+					<Card>
+						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+							<CardTitle className="text-xl font-medium">
+								Поступление
+							</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<div className="text-2xl font-bold">+2350</div>
+							<p className="text-xs text-muted-foreground">
+								+180.1% from last month
+							</p>
+						</CardContent>
+					</Card>					
+					<Card>
+						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+							<CardTitle className="text-xl font-medium">Мероприятия</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<div className="text-2xl font-bold">+573</div>
+							<p className="text-xs text-muted-foreground">
+								+201 since last hour
+							</p>
+						</CardContent>
+					</Card>
+					<Card>
+						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+							<CardTitle className="text-xl font-medium">Подбор жилья</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<div className="text-2xl font-bold">+573</div>
+							<p className="text-xs text-muted-foreground">
+								+201 since last hour
+							</p>
+						</CardContent>
+					</Card>
+					<Card>
+						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+							<CardTitle className="text-xl font-medium">Подбор программ доп. образования</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<div className="text-2xl font-bold">+573</div>
+							<p className="text-xs text-muted-foreground">
+								+201 since last hour
+							</p>
+						</CardContent>
+					</Card>
+				</div>
 			</div>
+      <Footer />
 		</>
 	);
 };
