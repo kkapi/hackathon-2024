@@ -1,10 +1,9 @@
 package com.hacathon.Admission.Domain;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.util.Map;
+import java.util.*;
 
 @Entity
 public class Directions {
@@ -45,6 +44,9 @@ public class Directions {
     private int contestBudget;
     @JsonSetter("Конкурс_К")
     private int contestContract;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Profession> profession;
 
     public Directions() {
     }
@@ -177,5 +179,15 @@ public class Directions {
         this.contestGroup = contestGroup;
     }
 
+    public Set<Profession> getProfession() {
+        return profession;
+    }
 
+    public void setProfession(Set<Profession> profession) {
+        this.profession = profession;
+    }
+
+    public void addProfession(Profession profession) {
+        this.profession.add(profession);
+    }
 }

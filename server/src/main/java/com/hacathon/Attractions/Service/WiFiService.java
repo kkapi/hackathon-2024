@@ -35,6 +35,7 @@ public class WiFiService {
     }
 
     public List<WiFi> findNear(double[] coordinates, double radius) {
-        return wiFiRepo.findNeedPoint(coordinates[0], coordinates[1], radius);
+        List<WiFi> wiFis = wiFiRepo.findNeedPoint(coordinates[0], coordinates[1], radius);
+        return wiFis;
     }
 }

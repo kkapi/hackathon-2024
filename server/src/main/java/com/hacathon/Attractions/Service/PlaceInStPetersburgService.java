@@ -3,6 +3,7 @@ package com.hacathon.Attractions.Service;
 import com.hacathon.Attractions.Domain.Attractions;
 import com.hacathon.Attractions.Domain.BeautifulPlace;
 import com.hacathon.Attractions.Domain.PlaceInStPetersburg;
+import com.hacathon.Attractions.Domain.WiFi;
 import com.hacathon.Attractions.Repos.PlaceInStPetersburgRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -41,7 +42,8 @@ public class PlaceInStPetersburgService {
             place.setLatitude(attraction.getCoord()[1]);
             place.setMetro(metroService.findNear(attraction.getCoord()));
             place.setToilets(toiletService.findNear(attraction.getCoord()));
-            place.setWiFi(wiFiService.findNear(attraction.getCoord(), 1000));
+            List<WiFi> wiFis = wiFiService.findNear(attraction.getCoord(), 300);
+            place.setWiFi(wiFis);
             place.setId(attraction.getOid() + 1000);
             placeRepo.save(place);
         }
@@ -55,7 +57,7 @@ public class PlaceInStPetersburgService {
             place.setLatitude(beautifulPlace.getCoordinates()[1]);
             place.setMetro(metroService.findNear(beautifulPlace.getCoordinates()));
             place.setToilets(toiletService.findNear(beautifulPlace.getCoordinates()));
-            place.setWiFi(wiFiService.findNear(beautifulPlace.getCoordinates(), 1000));
+            place.setWiFi(wiFiService.findNear(beautifulPlace.getCoordinates(), 300));
             place.setId(beautifulPlace.getId() + 10000);
             placeRepo.save(place);
         }
