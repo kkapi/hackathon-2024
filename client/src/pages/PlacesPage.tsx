@@ -19,6 +19,13 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from '@/components/ui/carousel';
+import {
 	Dialog,
 	DialogClose,
 	DialogContent,
@@ -50,6 +57,7 @@ const PlacesPage = () => {
 
 	const fetchMoreData = async () => {
 		const { data } = await $axios.get(`/getAttractions?page=${page}`);
+    
 		setCards([...cards, ...data]);
 		setPage(prev => prev + 1);
 	};
@@ -106,27 +114,67 @@ const PlacesPage = () => {
 										</CardFooter>
 									</Card>
 								</DialogTrigger>
-								<DialogContent
-									className="sm:max-w-md overflow-y-auto max-h-[200px]"
-								>
+								<DialogContent className="sm:max-w-md overflow-y-auto max-h-[90vh] max-w-[90vw] md:max-w-[50vw]">
 									<DialogHeader>
-										<DialogTitle>{card.beautifulPlace.title}</DialogTitle>
+										<DialogTitle className="text-xl">
+											{card.beautifulPlace.title}
+										</DialogTitle>
 										<DialogDescription>
-											# {card.beautifulPlace.categories[0]}{' '}
+											#{card.beautifulPlace.categories[0]}{' '}
 											{card.wiFi.length > 0 ? '# Wi-Fi' : ''}
 										</DialogDescription>
 									</DialogHeader>
-									<div className="flex flex-col items-center">
-										<img
-											src={card.beautifulPlace.linkToPhotos[0]}
-											className="object-cover w-1/3 lg:w-2/3 rounded-xl mb-5"
-										/>
-										<p>{card.beautifulPlace.description}</p>
+									<Separator />
+									<div className="flex flex-col items-center gap-4">
+										<div>
+											<Carousel className="max-w-[50vw] md:max-w-[20vw]">
+												<CarouselContent className="w-full">
+													{card.beautifulPlace.linkToPhotos.map(
+														(img, index) => (
+															<CarouselItem key={index}>
+																<img
+																	src={img}
+																	className="object-cover w-full rounded-xl"
+																/>
+															</CarouselItem>
+														)
+													)}
+												</CarouselContent>
+												<CarouselPrevious />
+												<CarouselNext />
+											</Carousel>
+										</div>
+										<p className="w-[85%]">{card.beautifulPlace.description}</p>
 									</div>
-									<DialogFooter className="sm:justify-start">
+									<Separator />
+									<div className="flex flex-col gap-3 ml-5">                    
+										{card.wiFi.length > 0 && (
+											<div>
+												Wi-Fi
+												{card.wiFi.map(wifi => (
+													<div>
+														{wifi.address} {wifi.coordinates.join('')}
+														<Button variant="secondary">Построить</Button>
+													</div>
+												))}
+											</div>
+										)}
+
+										<div>
+											Toilet{' '}
+											<div>
+												{card.toilets.address}{' '}
+												<Button variant="secondary">Построить</Button>
+											</div>{' '}
+										</div>
+									</div>
+									<DialogFooter>
+										<a href="https://ya.ru/" target="_blank">
+											<Button>Построить маршрут</Button>
+										</a>
 										<DialogClose asChild>
 											<Button type="button" variant="secondary">
-												Close
+												Закрыть
 											</Button>
 										</DialogClose>
 									</DialogFooter>
