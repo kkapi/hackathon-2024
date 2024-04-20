@@ -1,7 +1,8 @@
-import { Menu, Package2 } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Button } from "./ui/button";
+import { Menu, Package2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { Button } from './ui/button';
+import ModeToggle from './ModeToggle';
 
 const Header = () => {
 	return (
@@ -15,34 +16,34 @@ const Header = () => {
 					<span className="sr-only">Acme Inc</span>
 				</Link>
 				<Link
-					to="/"
+					to="/places"
 					className="text-foreground transition-colors hover:text-foreground"
 				>
-					Dashboard
+					Места рядом
 				</Link>
 				<Link
 					to="/"
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
-					Orders
+					Поступление
+				</Link>
+				<Link
+					to="/activities"
+					className="text-muted-foreground transition-colors hover:text-foreground"
+				>
+					Мероприятия
 				</Link>
 				<Link
 					to="/"
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
-					Products
+					Подбор жилья
 				</Link>
 				<Link
 					to="/"
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
-					Customers
-				</Link>
-				<Link
-					to="/"
-					className="text-muted-foreground transition-colors hover:text-foreground"
-				>
-					Analytics
+					Подбор программ доп. образования
 				</Link>
 			</nav>
 			<Sheet>
@@ -62,35 +63,36 @@ const Header = () => {
 							<span className="sr-only">Acme Inc</span>
 						</Link>
 						<Link to="/" className="hover:text-foreground">
-							Dashboard
+							Места рядом
 						</Link>
 						<Link
 							to="/"
 							className="text-muted-foreground hover:text-foreground"
 						>
-							Orders
+							Поступление
 						</Link>
 						<Link
 							to="/"
 							className="text-muted-foreground hover:text-foreground"
 						>
-							Products
+							Мероприятия
 						</Link>
 						<Link
 							to="/"
 							className="text-muted-foreground hover:text-foreground"
 						>
-							Customers
+							Подбор жилья
 						</Link>
 						<Link
 							to="/"
 							className="text-muted-foreground hover:text-foreground"
 						>
-							Analytics
+							Подбор программ доп. образования
 						</Link>
 					</nav>
 				</SheetContent>
 			</Sheet>
+      <ModeToggle />
 		</header>
 	);
 };
