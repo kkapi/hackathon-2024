@@ -155,14 +155,6 @@ public class Directions {
         this.contestContract = contestContract;
     }
 
-    public String getGroup() {
-        return contestGroup;
-    }
-
-    public void setGroup(String group) {
-        this.contestGroup = group;
-    }
-
     public String getNumber() {
         return number;
     }

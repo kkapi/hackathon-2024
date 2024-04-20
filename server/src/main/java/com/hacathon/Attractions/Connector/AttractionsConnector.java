@@ -49,4 +49,18 @@ public class AttractionsConnector {
                                               @RequestParam(value = "type") String type) {
         return placeInStPetersburgService.findPlaceWithCoordinatesWithType(longitude, latitude, 1, type);
     }
+
+    @CrossOrigin
+    @GetMapping(value = "/getAttractions", params = {"page", "hasWiFi"}, headers = {"longitude", "latitude"})
+    public List<PlaceInStPetersburg> getPlaceWithWiFi(@RequestHeader(value = "longitude") double longitude, @RequestHeader(value = "latitude") double latitude,
+                                                      @RequestParam(value = "page") int page, @RequestParam(value = "hasWiFi") int hasWiFi){
+        return placeInStPetersburgService.findPlaceWithCoordinatesWithWiFi(longitude, latitude, page);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "getAttractions", params = {"page", "type", "hasWiFi"}, headers = {"longitude", "latitude"})
+    public List<PlaceInStPetersburg> getPlace(@RequestHeader(value = "longitude") double longitude, @RequestHeader(value = "latitude") double latitude,
+                                              @RequestParam(value = "page") int page, @RequestParam(value = "type") String type, @RequestParam(value = "hasWiFi") int hasWiFi) {
+        return placeInStPetersburgService.findPlaceWithCoordinatesWithTypeWithWiFi(longitude, latitude, page, type);
+    }
 }
