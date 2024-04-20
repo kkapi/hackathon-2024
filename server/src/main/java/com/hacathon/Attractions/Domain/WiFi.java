@@ -3,6 +3,7 @@ package com.hacathon.Attractions.Domain;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -30,15 +31,18 @@ public class WiFi {
     private double lon;
     private double lat;
 
+    @ManyToOne
+    private PlaceInStPetersburg place_id;
+
     public void inArray(){
         this.coordinates = new double[2];
-        coordinates[0] = lat;
-        coordinates[1] = lon;
+        coordinates[0] = lon;
+        coordinates[1] = lat;
     }
 
     public void outArray(){
-        lat = coordinates[0];
-        lon = coordinates[1];
+        lon = coordinates[0];
+        lat = coordinates[1];
     }
 
     public WiFi() {

@@ -1,28 +1,49 @@
 package com.hacathon.Admission.Domain;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import java.util.Map;
 
 @Entity
 public class Directions {
     @Id
+    private String number;
+
+    @JsonSetter("Направление")
     private String direction;
 
+    @JsonSetter("Конкурсн. группа")
+    private String contestGroup;
+
+    @JsonSetter("КЦП_Б")
     private int placeBudget;
+    @JsonSetter("КЦП_К")
     private int placeContract;
 
+    @JsonSetter("Цена")
     private int price;
 
+    @JsonSetter("Предмет 1")
     private String subjectOne;
+    @JsonSetter("Предмет 2")
     private String subjectTwo;
+    @JsonSetter("Предмет 3")
     private String subjectThree;
 
+    @JsonSetter("Мин. балл 1")
     private int minPointOne;
+    @JsonSetter("Мин. балл 2")
     private int minPointTwo;
+    @JsonSetter("Мин. балл 3")
     private int minPointThree;
 
+    @JsonSetter("Балл")
     private int pointPreviousYear;
+    @JsonSetter("Конкурс_Б")
     private int contestBudget;
+    @JsonSetter("Конкурс_К")
     private int contestContract;
 
     public Directions() {
@@ -131,4 +152,30 @@ public class Directions {
     public void setContestContract(int contestContract) {
         this.contestContract = contestContract;
     }
+
+    public String getGroup() {
+        return contestGroup;
+    }
+
+    public void setGroup(String group) {
+        this.contestGroup = group;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getContestGroup() {
+        return contestGroup;
+    }
+
+    public void setContestGroup(String contestGroup) {
+        this.contestGroup = contestGroup;
+    }
+
+
 }
