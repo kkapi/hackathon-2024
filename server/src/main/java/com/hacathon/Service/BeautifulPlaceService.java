@@ -24,6 +24,7 @@ public class BeautifulPlaceService {
         do {
             getApi = attractionsRequests.beautifulPlaces(page);
             for(Place place : getApi.getData()) {
+                place.getPlace().setId(place.getPlace().getId() + 1);
                 beautifulPlaceRepo.save(place.getPlace());
             }
             count = getApi.getCount();
