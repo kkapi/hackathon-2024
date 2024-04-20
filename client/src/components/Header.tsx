@@ -1,4 +1,4 @@
-import { Menu, Package2 } from 'lucide-react';
+import { Menu, NotebookPen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 import { Button } from './ui/button';
@@ -6,13 +6,13 @@ import ModeToggle from './ModeToggle';
 
 const Header = () => {
 	return (
-		<header className="sticky top-0 flex h-16 items-center md:justify-center gap-4 border-b bg-background px-4 md:px-6">
+		<header className="sticky top-0 z-50 w-full flex h-16 items-center md:justify-center gap-4 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 md:px-6">
 			<nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:justify-between w-full md:gap-5 md:text-sm lg:gap-6">
 				<Link
 					to="/"
 					className="flex items-center gap-2 text-lg font-semibold md:text-base"
 				>
-					<Package2 className="h-6 w-6" />
+					<NotebookPen className="h-6 w-6" />
 					<span>Ассистент студента</span>
 				</Link>
 				<Link
@@ -45,22 +45,22 @@ const Header = () => {
 				>
 					Подбор программ доп. образования
 				</Link>
-        <ModeToggle />
+				<ModeToggle />
 			</nav>
 			<Sheet>
 				<SheetTrigger asChild>
 					<Button variant="outline" size="icon" className="shrink-0 md:hidden">
 						<Menu className="h-5 w-5" />
-						<span className="sr-only">Toggle navigation menu</span>
+						<span className="sr-only">Меню навигации</span>
 					</Button>
 				</SheetTrigger>
 				<SheetContent side="left">
 					<nav className="grid gap-6 text-lg font-medium">
 						<Link
 							to="/"
-							className="flex items-center gap-2 text-lg font-semibold"
+							className="flex items-center gap-2 text-xl font-semibold"
 						>
-							<Package2 className="h-6 w-6" />
+							<NotebookPen className="h-7 w-7" />
 							<span>Ассистент студента</span>
 						</Link>
 						<Link to="/" className="hover:text-foreground">
@@ -93,6 +93,9 @@ const Header = () => {
 					</nav>
 				</SheetContent>
 			</Sheet>
+			<span className='ml-auto md:hidden'>
+				<ModeToggle />
+			</span>
 		</header>
 	);
 };
