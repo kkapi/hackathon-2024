@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.ListIterator;
 
 @Service
 public class PlaceInStPetersburgService {
@@ -73,5 +74,27 @@ public class PlaceInStPetersburgService {
 
     public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithType(double longitude, double latitude, int page, String type) {
         return placeRepo.findNearByCategory(longitude,latitude, type, PageRequest.of(page, 9));
+    }
+
+    public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithWiFi(double longitude, double latitude, int page) {
+        List<PlaceInStPetersburg> place = placeRepo.findNear(longitude, latitude, PageRequest.of(page, 9));
+        ListIterator<PlaceInStPetersburg> iterator = place.listIterator();
+        for (ListIterator<PlaceInStPetersburg> it = iterator; it.hasNext(); ) {
+            PlaceInStPetersburg p = it.next();
+            if(p.getWiFi().size() == 0)
+                it.remove();
+        }
+        return place;
+    }
+
+    public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithTypeWithWiFi(double longitude, double latitude, int page, String type) {
+        List<PlaceInStPetersburg> place = placeRepo.findNearByCategory(longitude,latitude, type, PageRequest.of(page, 9));
+        ListIterator<PlaceInStPetersburg> iterator = place.listIterator();
+        for (ListIterator<PlaceInStPetersburg> it = iterator; it.hasNext(); ) {
+            PlaceInStPetersburg p = it.next();
+            if(p.getWiFi().size() == 0)
+                it.remove();
+        }
+        return place;
     }
 }
