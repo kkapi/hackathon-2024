@@ -55,10 +55,10 @@ const HomePage = () => {
 				<div className="mt-12 grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 					<Card
 						onClick={() => navigate('/places')}
-						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
 					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle className="text-xl font-medium">Места рядом</CardTitle>
+							<CardTitle className="text-xl font-medium">Интересные места</CardTitle>
 						</CardHeader>
 						<CardContent className="flex items-center justify-center gap-4">
 							<p className="text-xs text-muted-foreground w-5/6">
@@ -73,7 +73,7 @@ const HomePage = () => {
 					</Card>
 					<Card
 						onClick={() => navigate('/universities')}
-						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
 					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 							<CardTitle className="text-xl font-medium">Поступление</CardTitle>
@@ -91,7 +91,7 @@ const HomePage = () => {
 					</Card>
 					<Card
 						onClick={() => navigate('/activities')}
-						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
 					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 							<CardTitle className="text-xl font-medium">Мероприятия</CardTitle>
@@ -109,7 +109,7 @@ const HomePage = () => {
 					</Card>
 					<Card
 						onClick={() => navigate('/apartments')}
-						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
 					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 							<CardTitle className="text-xl font-medium">
@@ -128,11 +128,11 @@ const HomePage = () => {
 					</Card>
 					<Card
 						onClick={() => navigate('/education')}
-						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
 					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 							<CardTitle className="text-xl font-medium">
-								Подбор программ доп. образования
+								Дополнительное образование
 							</CardTitle>
 						</CardHeader>
 						<CardContent className="flex items-center justify-center gap-4">
