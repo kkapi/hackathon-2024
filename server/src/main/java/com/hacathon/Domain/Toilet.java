@@ -7,8 +7,8 @@ public class Toilet {
     @Id
     private String address;
 
-    @Transient
-    private double[] coordinates;
+    private double lon;
+    private double lat;
 
     public Toilet() {
     }
@@ -21,11 +21,19 @@ public class Toilet {
         this.address = address;
     }
 
-    public double[] getCoordinates() {
-        return coordinates;
+    public double getLon() {
+        return lon;
     }
 
-    public void setCoordinates(double[] coordinates) {
-        this.coordinates = coordinates;
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 }

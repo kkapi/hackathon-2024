@@ -1,6 +1,7 @@
 package com.hacathon.Timer;
 
 import com.hacathon.Domain.BeautifulPlace;
+import com.hacathon.Repos.PlaceInStPetersburgRepo;
 import com.hacathon.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,12 +26,18 @@ public class UpdateData {
     @Autowired
     BeautifulPlaceService beautifulPlaceService;
 
+    @Autowired
+    PlaceInStPetersburgService stPetersburgService;
+
     @Scheduled(fixedDelay = 3600000)
     public void update() throws IOException {
+        System.out.println("Начинается обновление данных");
         wiFiService.updateData();
         toiletService.updateData();
         metroService.updateData();
         attractionsService.updateData();
         beautifulPlaceService.updateData();
+        stPetersburgService.updateData();
+        System.out.println("Обновление данных завершено");
     }
 }

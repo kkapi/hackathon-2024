@@ -24,4 +24,8 @@ public class MetroService {
             metroRepo.save(metro);
         }
     }
+
+    public Metro findNear(double[] coord) {
+        return metroRepo.findNear(coord[0], coord[1]).get(0);
+    }
 }

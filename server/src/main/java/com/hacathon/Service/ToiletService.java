@@ -1,5 +1,6 @@
 package com.hacathon.Service;
 
+import com.hacathon.Domain.Metro;
 import com.hacathon.Domain.Toilet;
 import com.hacathon.Domain.WiFi;
 import com.hacathon.HttpsRequests.HtmlParsing;
@@ -23,5 +24,9 @@ public class ToiletService {
         for(Toilet toilet : getToilet) {
             toiletRepo.save(toilet);
         }
+    }
+
+    public Toilet findNear(double[] coord) {
+        return toiletRepo.findNear(coord[0], coord[1]).get(0);
     }
 }

@@ -23,7 +23,8 @@ public class HtmlParsing {
             Toilet toilet = new Toilet();
             double[] coordinates = apiGeocoder.ApiGeoCodeJustAbout(element.text().split("\\(")[0].split("участок")[0]);
             if(coordinates != null){
-                toilet.setCoordinates(coordinates);
+                toilet.setLon(coordinates[0]);
+                toilet.setLat(coordinates[1]);
                 toilet.setAddress(element.text().split("\\(")[0].split("участок")[0]);
                 toilets.add(toilet);
             }
@@ -44,7 +45,8 @@ public class HtmlParsing {
             String coord2 = coord.split("ш")[1].replace(" ", "").replace(".", "");
             double a = Double.parseDouble(coord1.split("°")[0])+Double.parseDouble(coord1.split("°")[1].split("′")[0])/60d+Double.parseDouble(coord1.split("°")[1].split("′")[1].split("″")[0])/3600d;
             double b = Double.parseDouble(coord2.split("°")[0])+Double.parseDouble(coord2.split("°")[1].split("′")[0])/60d+Double.parseDouble(coord2.split("°")[1].split("′")[1].split("″")[0])/3600d;
-            metro.setCoordinates(new double[]{a, b});
+            metro.setLon(a);
+            metro.setLat(b);
             metros.add(metro);
         }
         return metros;

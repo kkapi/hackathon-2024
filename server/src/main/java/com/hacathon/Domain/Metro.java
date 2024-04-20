@@ -2,15 +2,14 @@ package com.hacathon.Domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
 
 @Entity
 public class Metro {
     @Id
     private String name;
 
-    @Transient
-    private double[] coordinates;
+    private double lon;
+    private double lat;
 
     public Metro() {
     }
@@ -23,11 +22,19 @@ public class Metro {
         this.name = name;
     }
 
-    public double[] getCoordinates() {
-        return coordinates;
+    public double getLon() {
+        return lon;
     }
 
-    public void setCoordinates(double[] coordinates) {
-        this.coordinates = coordinates;
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 }

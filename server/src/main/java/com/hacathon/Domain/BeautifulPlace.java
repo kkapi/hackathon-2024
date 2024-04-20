@@ -38,11 +38,11 @@ public class BeautifulPlace {
         private String keywords;
 
         @JsonSetter("categories")
-        @Transient
+        @ElementCollection(fetch = FetchType.EAGER)
         private List<String> categories;
 
         @JsonSetter("link_to_photos")
-        @Transient
+        @ElementCollection(fetch = FetchType.EAGER)
         private List<String> linkToPhotos;
 
         @JsonSetter("site")
@@ -54,6 +54,20 @@ public class BeautifulPlace {
 
         @JsonSetter("district")
         private String district;
+
+        private double lon;
+        private double lat;
+
+        public void inArray(){
+            this.coordinates = new double[2];
+            coordinates[0] = lat;
+            coordinates[1] = lon;
+        }
+
+        public void outArray(){
+            lat = coordinates[0];
+            lon = coordinates[1];
+        }
 
         public BeautifulPlace() {
         }
@@ -83,11 +97,14 @@ public class BeautifulPlace {
         }
 
         public double[] getCoordinates() {
+            if(coordinates == null)
+                inArray();
             return coordinates;
         }
 
         public void setCoordinates(double[] coordinates) {
             this.coordinates = coordinates;
+            outArray();
         }
 
         public String getArea() {

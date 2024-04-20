@@ -27,6 +27,20 @@ public class WiFi {
     @Transient
     private double[] coordinates;
 
+    private double lon;
+    private double lat;
+
+    public void inArray(){
+        this.coordinates = new double[2];
+        coordinates[0] = lat;
+        coordinates[1] = lon;
+    }
+
+    public void outArray(){
+        lat = coordinates[0];
+        lon = coordinates[1];
+    }
+
     public WiFi() {
     }
 
@@ -71,10 +85,13 @@ public class WiFi {
     }
 
     public double[] getCoordinates() {
+        if(coordinates == null)
+            inArray();
         return coordinates;
     }
 
     public void setCoordinates(double[] coordinates) {
         this.coordinates = coordinates;
+        outArray();
     }
 }

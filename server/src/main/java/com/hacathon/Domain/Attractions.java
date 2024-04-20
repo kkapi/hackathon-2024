@@ -74,6 +74,20 @@ public class Attractions {
     @Transient
     private double[] coord;
 
+    private double lon;
+    private double lat;
+
+    public void inArray(){
+        this.coord = new double[2];
+        coord[0] = lat;
+        coord[1] = lon;
+    }
+
+    public void outArray(){
+        lat = coord[0];
+        lon = coord[1];
+    }
+
     public Attractions() {
     }
 
@@ -163,5 +177,64 @@ public class Attractions {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDescriptionEn() {
+        return descriptionEn;
+    }
+
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+
+    public String getObjHistory() {
+        return objHistory;
+    }
+
+    public void setObjHistory(String objHistory) {
+        this.objHistory = objHistory;
+    }
+
+    public String getObjHistoryEn() {
+        return objHistoryEn;
+    }
+
+    public void setObjHistoryEn(String objHistoryEn) {
+        this.objHistoryEn = objHistoryEn;
+    }
+
+    public String getObj_hints() {
+        return obj_hints;
+    }
+
+    public void setObj_hints(String obj_hints) {
+        this.obj_hints = obj_hints;
+    }
+
+    public String getWorkTime() {
+        return workTime;
+    }
+
+    public void setWorkTime(String workTime) {
+        this.workTime = workTime;
+    }
+
+    public String getWorkTimeEn() {
+        return workTimeEn;
+    }
+
+    public void setWorkTimeEn(String workTimeEn) {
+        this.workTimeEn = workTimeEn;
+    }
+
+    public double[] getCoord() {
+        if(coord == null)
+            inArray();
+        return coord;
+    }
+
+    public void setCoord(double[] coord) {
+        this.coord = coord;
+        outArray();
     }
 }

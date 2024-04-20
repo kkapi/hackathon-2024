@@ -10,6 +10,7 @@ public class PlaceInStPetersburg {
     private long id;
 
     private String type;
+    private String category;
 
     private double longitude;
     private double latitude;
@@ -20,8 +21,8 @@ public class PlaceInStPetersburg {
     @OneToOne
     private BeautifulPlace beautifulPlace;
 
-    @OneToMany
-    private List<Toilet> toilets;
+    @OneToOne
+    private Toilet toilets;
 
     @OneToOne
     private Metro metro;
@@ -62,5 +63,53 @@ public class PlaceInStPetersburg {
 
     public void setBeautifulPlace(BeautifulPlace beautifulPlace) {
         this.beautifulPlace = beautifulPlace;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Metro getMetro() {
+        return metro;
+    }
+
+    public void setMetro(Metro metro) {
+        this.metro = metro;
+    }
+
+    public List<WiFi> getWiFi() {
+        return wiFi;
+    }
+
+    public void setWiFi(List<WiFi> wiFi) {
+        this.wiFi = wiFi;
+    }
+
+    public Toilet getToilets() {
+        return toilets;
+    }
+
+    public void setToilets(Toilet toilets) {
+        this.toilets = toilets;
     }
 }
