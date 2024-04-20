@@ -27,7 +27,7 @@ public class PlaceInStPetersburg {
     @OneToOne
     private Metro metro;
 
-    @OneToMany(mappedBy="place_id")
+    @ManyToMany
     private List<WiFi> wiFi;
 
     public PlaceInStPetersburg() {

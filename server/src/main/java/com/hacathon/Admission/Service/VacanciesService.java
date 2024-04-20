@@ -4,13 +4,16 @@ import com.hacathon.Admission.Domain.Profession;
 import com.hacathon.Admission.Domain.Vacancies;
 import com.hacathon.Admission.Repos.ProfessionRepo;
 import com.hacathon.Admission.Repos.VacanciesRepo;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VacanciesService {
@@ -20,19 +23,34 @@ public class VacanciesService {
     @Autowired
     ProfessionRepo professionRepo;
 
-    public void updateData() throws IOException {
+    public void updateData() throws IOException, CsvValidationException {
         BufferedReader in = new BufferedReader(new FileReader("src/main/resources/DataCSV/Vacancies.csv"));
         in.readLine();
         while (in.ready()) {
-            String line = in.readLine();
-            String[] split = line.split(",");
+            CSVReader csvReader = new CSVReader(in);
+            String[] split = csvReader.readNext();
             Profession profession = new Profession();
             profession.setProfession(split[1]);
             Vacancies vacancies = new Vacancies();
-            vacancies.setGroupVacancies(profession);
-            vacancies.setSubject(split[4]);
-            professionRepo.save(profession);
-            vacanciesRepo.save(vacancies);
+            if(!split[1].equals(""))
+                professionRepo.save(profession);
+            if(!(split.length <= 4) && !split[1].equals("")) {
+                vacancies.setGroupVacancies(profession);
+                vacancies.setSubject(split[4]);
+                vacanciesRepo.save(vacancies);
+            }
         }
+    }
+
+    public Optional<Vacancies> findSubject(String id) {
+        return vacanciesRepo.findById(id);
+    }
+
+    public Profession findProfessionById(String profession) {
+        return professionRepo.findById(profession).get();
+    }
+
+    public List<Profession> findAllProfession() {
+        return professionRepo.findAll();
     }
 }
