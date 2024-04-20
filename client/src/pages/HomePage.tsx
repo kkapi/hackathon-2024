@@ -1,16 +1,22 @@
 import Balance from 'react-wrap-balancer';
 
 import { cn } from '@/lib/utils';
-import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Footer from '@/components/Footer';
+import DefaultLayout from '@/layouts/DefaultLayout';
+import { useNavigate } from 'react-router-dom';
+import { Castle } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
+import { CalendarSearch } from 'lucide-react';
+import { Home } from 'lucide-react';
+import { BookOpenText } from 'lucide-react';
 
 const HomePage = () => {
+	const navigate = useNavigate();
+
 	return (
-		<>
-			<Header />
+		<DefaultLayout>
 			<div className="container relative">
 				<section
 					className={cn(
@@ -46,70 +52,103 @@ const HomePage = () => {
 
 				<Separator />
 
-				<div className="mt-12 grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-2">
-					<Card>
+				<div className="mt-12 grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+					<Card
+						onClick={() => navigate('/places')}
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle className="text-xl font-medium">
-								Места рядом
-							</CardTitle>
+							<CardTitle className="text-xl font-medium">Места рядом</CardTitle>
 						</CardHeader>
-						<CardContent>
-							<div className="text-2xl font-bold">$45,231.89</div>
-							<p className="text-xs text-muted-foreground">
-								+20.1% from last month
+						<CardContent className="flex items-center justify-center gap-4">
+							<p className="text-xs text-muted-foreground w-5/6">
+								Узнайте о лучших местах в городе для занятий и работы в удобной
+								и красивой обстановке. Мы предоставили список мест, которые
+								отличаются не только своей привлекательностью, но и обладают
+								такими удобствами, как бесплатные точки доступа Wi-Fi,
+								общественные туалеты и ближайшие станции метро.
 							</p>
+							<Castle className="w-1/6 h-auto" />
 						</CardContent>
 					</Card>
-					<Card>
+					<Card
+						onClick={() => navigate('/universities')}
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle className="text-xl font-medium">
-								Поступление
-							</CardTitle>
+							<CardTitle className="text-xl font-medium">Поступление</CardTitle>
 						</CardHeader>
-						<CardContent>
-							<div className="text-2xl font-bold">+2350</div>
-							<p className="text-xs text-muted-foreground">
-								+180.1% from last month
+						<CardContent className="flex items-center justify-center gap-4">
+							<p className="text-xs text-muted-foreground w-5/6">
+								Исследуйте мир образования! Подберите ВУЗ для поступления по
+								проходным баллам, предметам для сдачи, профессиям и другим
+								параметрам. Найдите идеальное образовательное направление для
+								вашего будущего. Планируйте свое обучение с удобством и
+								точностью, открывая двери к успешной карьере.
 							</p>
+							<GraduationCap className="w-1/6 h-auto" />
 						</CardContent>
-					</Card>					
-					<Card>
+					</Card>
+					<Card
+						onClick={() => navigate('/activities')}
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 							<CardTitle className="text-xl font-medium">Мероприятия</CardTitle>
 						</CardHeader>
-						<CardContent>
-							<div className="text-2xl font-bold">+573</div>
-							<p className="text-xs text-muted-foreground">
-								+201 since last hour
+						<CardContent className="flex items-center justify-center gap-4">
+							<p className="text-xs text-muted-foreground w-5/6">
+								Найдите разнообразные мероприятия, которые помогут развивать
+								ваши профессиональные навыки. Наша платформа учитывает близость
+								к вашему дому, работе или учебе, а также место проведения
+								занятий, чтобы предложить наиболее удобные и полезные
+								мероприятия для вас.
 							</p>
+							<CalendarSearch className="w-1/6 h-auto" />
 						</CardContent>
 					</Card>
-					<Card>
+					<Card
+						onClick={() => navigate('/apartments')}
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle className="text-xl font-medium">Подбор жилья</CardTitle>
+							<CardTitle className="text-xl font-medium">
+								Подбор жилья
+							</CardTitle>
 						</CardHeader>
-						<CardContent>
-							<div className="text-2xl font-bold">+573</div>
-							<p className="text-xs text-muted-foreground">
-								+201 since last hour
+						<CardContent className="flex items-center justify-center gap-4">
+							<p className="text-xs text-muted-foreground w-5/6">
+								Найдите свое идеальное студенческое жилье, где ты сможешь удобно
+								и комфортно жить во время учебы в Санкт-Петербурге. Наша
+								платформа предоставляет информацию и удобный поиск студенческого
+								жилья, которое соответствует вашим потребностям и бюджету.
 							</p>
+							<Home className="w-1/6 h-auto" />
 						</CardContent>
 					</Card>
-					<Card>
+					<Card
+						onClick={() => navigate('/education')}
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted"
+					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle className="text-xl font-medium">Подбор программ доп. образования</CardTitle>
+							<CardTitle className="text-xl font-medium">
+								Подбор программ доп. образования
+							</CardTitle>
 						</CardHeader>
-						<CardContent>
-							<div className="text-2xl font-bold">+573</div>
-							<p className="text-xs text-muted-foreground">
-								+201 since last hour
+						<CardContent className="flex items-center justify-center gap-4">
+							<p className="text-xs text-muted-foreground w-5/6">
+								Ознакомьтесь с программами
+								дополнительного образования для студентов. Откройте широкий
+								спектр курсов, мастер-классов и возможностей углубленного
+								обучения, предназначенных для улучшения академических
+								результатов, расширения кругозора и развития личности.
 							</p>
+							<BookOpenText className="w-1/6 h-auto" />
 						</CardContent>
 					</Card>
 				</div>
 			</div>
-      <Footer />
-		</>
+		</DefaultLayout>
 	);
 };
 

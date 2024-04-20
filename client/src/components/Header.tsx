@@ -22,7 +22,7 @@ const Header = () => {
 					Места рядом
 				</Link>
 				<Link
-					to="/"
+					to="/universities"
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
 					Поступление
@@ -34,13 +34,13 @@ const Header = () => {
 					Мероприятия
 				</Link>
 				<Link
-					to="/"
+					to="/apartments"
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
 					Подбор жилья
 				</Link>
 				<Link
-					to="/"
+					to="/education"
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
 					Подбор программ доп. образования
@@ -63,29 +63,29 @@ const Header = () => {
 							<NotebookPen className="h-7 w-7" />
 							<span>Ассистент студента</span>
 						</Link>
-						<Link to="/" className="hover:text-foreground">
+						<Link to="/places" className="text-muted-foreground hover:text-foreground">
 							Места рядом
 						</Link>
 						<Link
-							to="/"
+							to="/universities"
 							className="text-muted-foreground hover:text-foreground"
 						>
 							Поступление
 						</Link>
 						<Link
-							to="/"
+							to="/activities"
 							className="text-muted-foreground hover:text-foreground"
 						>
 							Мероприятия
 						</Link>
 						<Link
-							to="/"
+							to="/apartments"
 							className="text-muted-foreground hover:text-foreground"
 						>
 							Подбор жилья
 						</Link>
 						<Link
-							to="/"
+							to="/education"
 							className="text-muted-foreground hover:text-foreground"
 						>
 							Подбор программ доп. образования

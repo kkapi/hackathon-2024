@@ -1,11 +1,11 @@
 import DefaultLayout from "@/layouts/DefaultLayout"
 
-const UniversitiesPage = () => {
+const ApartmentsPage = () => {
   return (
     <DefaultLayout>
-			<div>UniversitiesPage</div>
+			<div>ApartmentsPage</div>
 		</DefaultLayout>
   )
 }
 
-export default UniversitiesPage
+export default ApartmentsPage

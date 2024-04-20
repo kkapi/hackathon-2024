@@ -1,6 +1,12 @@
+import DefaultLayout from "@/layouts/DefaultLayout"
+
 const PlacesPage = () => {
   return (
-    <div>PlacesPage</div>
+    <DefaultLayout>
+			<div className="container relative">
+        Places
+      </div>
+		</DefaultLayout>
   )
 }
 

@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 type DefaultLayoutProps = {
   children: React.ReactElement;
@@ -6,7 +8,9 @@ type DefaultLayoutProps = {
 const DefaultLayout = ({children} : DefaultLayoutProps) => {
   return (
     <>
+      <Header />
       {children}
+      <Footer />
     </>
   )
 }
