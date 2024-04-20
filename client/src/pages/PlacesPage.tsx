@@ -57,6 +57,7 @@ const PlacesPage = () => {
 
 	const fetchMoreData = async () => {
 		const { data } = await $axios.get(`/getAttractions?page=${page}`);
+    
 		setCards([...cards, ...data]);
 		setPage(prev => prev + 1);
 	};
