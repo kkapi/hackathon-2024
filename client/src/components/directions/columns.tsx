@@ -6,6 +6,10 @@ import {
 	CollapsibleTrigger,
 } from '../ui/collapsible';
 
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { Button } from '../ui/button';
+
+
 type Profession = {
 	profession: string;
 };
@@ -44,15 +48,45 @@ export const columns: ColumnDef<Direction>[] = [
 	},
 	{
 		accessorKey: 'placeBudget',
-		header: 'Количество бюджетных мест',
+		header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Бюджетные места
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
 	},
 	{
 		accessorKey: 'placeContract',
-		header: 'Количество контрактных мест',
+		header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Контрактные места
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
 	},
 	{
 		accessorKey: 'price',
-		header: 'Цена',
+		header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Цена
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
 		cell: ({ row }) => {
 			const amount = parseFloat(row.getValue('price'));
 			const formatted = new Intl.NumberFormat('ru-RU', {
@@ -89,7 +123,17 @@ export const columns: ColumnDef<Direction>[] = [
 	},
 	{
 		accessorKey: 'pointPreviousYear',
-		header: 'Проходной балл',
+		header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Проходной балл
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
 	},
 	{
 		accessorKey: 'contestBudget',
