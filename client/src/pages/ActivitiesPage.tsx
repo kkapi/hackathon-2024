@@ -1,7 +1,11 @@
-const ActivitiesPage = () => {
-  return (
-    <div>ActivitiesPage</div>
-  )
-}
+import DefaultLayout from '@/layouts/DefaultLayout';
 
-export default ActivitiesPage
+const ActivitiesPage = () => {
+	return (
+		<DefaultLayout>
+			<div>ActivitiesPage</div>
+		</DefaultLayout>
+	);
+};
+
+export default ActivitiesPage;
