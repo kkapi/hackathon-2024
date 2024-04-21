@@ -78,6 +78,7 @@ export function DataTable<TData, TValue>({
 					}
 					className="max-w-sm"
 				/>
+          
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						<Button variant="outline" className="ml-auto">
@@ -87,8 +88,7 @@ export function DataTable<TData, TValue>({
 					<DropdownMenuContent align="end">
 						{table
 							.getAllColumns()
-							.filter(column => column.getCanHide())
-              .filter(column => column.id !== 'Number')
+							.filter(column => column.getCanHide())             
 							.map(column => {
 								return (
 									<DropdownMenuCheckboxItem

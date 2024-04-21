@@ -41,7 +41,7 @@ const UniversitiesPage = () => {
 						не было так просто.
 					</p>
 				</div>
-				<div className='mt-7'>
+				<div className='mt-4'>
 					<DataTable columns={columns} data={data} />
 				</div>
 			</div>
