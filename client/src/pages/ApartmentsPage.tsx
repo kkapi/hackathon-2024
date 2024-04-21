@@ -64,15 +64,15 @@ const ApartmentsPage = () => {
 					)}
 					{info && (
 						<div className="flex flex-col gap-5">
-							<div>
+							<div className='text-lg font-medium'>
 								<span className="mr-3">Адрес:</span>
 								{info.address}
 							</div>
-							<div>
+							<div className='text-lg font-medium'>
 								<span className="mr-3">Цена ЖКХ:</span>
 								{info.price} руб.
 							</div>
-							<div>
+							<div className='text-lg font-medium'>
 								Наличие Wi-Fi:
 								{info.haveWiFi ? (
 									<Badge className="ml-2">Есть</Badge>
