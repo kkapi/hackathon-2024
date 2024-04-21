@@ -25,7 +25,13 @@ const Header = () => {
 					to="/universities"
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
-					Поступление
+					Поступление в ВУЗ
+				</Link>
+        <Link
+					to="/change"
+					className="text-muted-foreground transition-colors hover:text-foreground"
+				>
+					Смена направления
 				</Link>
 				<Link
 					to="/activities"
@@ -38,13 +44,7 @@ const Header = () => {
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
 					Подбор жилья
-				</Link>
-				<Link
-					to="/education"
-					className="text-muted-foreground transition-colors hover:text-foreground"
-				>
-					Подбор программ доп. образования
-				</Link>
+				</Link>				
 				<ModeToggle />
 			</nav>
 			<Sheet>

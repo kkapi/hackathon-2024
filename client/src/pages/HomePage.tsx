@@ -12,10 +12,11 @@ import { CalendarSearch } from 'lucide-react';
 import { Home } from 'lucide-react';
 import { BookOpenText } from 'lucide-react';
 import { useRef } from 'react';
+import { Replace } from 'lucide-react';
 
 const HomePage = () => {
 	const navigate = useNavigate();
-  const scrollToRef = useRef();
+	const scrollToRef = useRef();
 
 	return (
 		<DefaultLayout>
@@ -47,8 +48,17 @@ const HomePage = () => {
 							'flex w-full items-center justify-center space-x-4 py-4 md:pb-10'
 						)}
 					>
-						<Button onClick={() => scrollToRef.current.scrollIntoView()}>Начать</Button>
-						<Button onClick={() => location.href="https://github.com/kkapi/hackathon"} variant="outline">GitHub</Button>
+						<Button onClick={() => scrollToRef.current.scrollIntoView()}>
+							Начать
+						</Button>
+						<Button
+							onClick={() =>
+								(location.href = 'https://github.com/kkapi/hackathon')
+							}
+							variant="outline"
+						>
+							GitHub
+						</Button>
 					</div>
 				</section>
 
@@ -80,7 +90,9 @@ const HomePage = () => {
 						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
 					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle className="text-xl font-medium">Поступление</CardTitle>
+							<CardTitle className="text-xl font-medium">
+								Поступление в ВУЗ
+							</CardTitle>
 						</CardHeader>
 						<CardContent className="flex items-center justify-center gap-4">
 							<p className="text-xs text-muted-foreground w-5/6">
@@ -91,6 +103,26 @@ const HomePage = () => {
 								точностью, открывая двери к успешной карьере.
 							</p>
 							<GraduationCap className="w-1/6 h-auto" />
+						</CardContent>
+					</Card>
+					<Card
+						onClick={() => navigate('/change')}
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
+					>
+						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+							<CardTitle className="text-xl font-medium">
+								Смена направления
+							</CardTitle>
+						</CardHeader>
+						<CardContent className="flex items-center justify-center gap-4">
+							<p className="text-xs text-muted-foreground w-5/6">
+								Раздел "Подбор программы обучения" предназначен для помощи
+								студентам при переходе с одной программы обучения на другую с
+								учетом различных факторов. Здесь вы сможете найти информацию о
+								подходящих программных курсах, учитывая ваши
+								учебные планы и желаемую профессию.
+							</p>
+							<Replace className="w-1/6 h-auto" />
 						</CardContent>
 					</Card>
 					<Card
@@ -173,8 +205,7 @@ const HomePage = () => {
 								хакатона
 							</a>
 							, проходящего с 20 по 21 апреля в молодежном пространстве "ПРОСТО"
-							на Карповке. Номинация «Лучший цифровой сервис
-							Санкт-Петербурга»
+							на Карповке. Номинация «Лучший цифровой сервис Санкт-Петербурга»
 						</Balance>
 					</div>
 					<div className="flex flex-col items-center gap-4">

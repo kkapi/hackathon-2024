@@ -36,6 +36,25 @@ interface DataTableProps<TData, TValue> {
 	data: TData[];
 }
 
+const rusHeader = {
+	number: 'Номер направления',
+	direction: 'Направление',
+	contestGroup: 'Конкурсная группа',
+	placeBudget: 'Бюджетные места',
+	placeContract: 'Контрактные места',
+	price: 'Цена',
+	subjectOne: 'Предмет 1',
+	subjectTwo: 'Предмет 2',
+	subjectThree: 'Предмет 3',
+	minPointOne: 'Минимальный балл 1',
+	minPointTwo: 'Минимальный балл 2',
+	minPointThree: 'Минимальный балл 3',
+	pointPreviousYear: 'Проходной балл',
+	contestBudget: 'Конкурс на бюджет',
+	contestContract: 'Конкурс на контракт',
+	profession: 'Профессии',
+};
+
 export function DataTable<TData, TValue>({
 	columns,
 	data,
@@ -78,7 +97,7 @@ export function DataTable<TData, TValue>({
 					}
 					className="max-w-sm"
 				/>
-          
+
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						<Button variant="outline" className="ml-auto">
@@ -88,7 +107,7 @@ export function DataTable<TData, TValue>({
 					<DropdownMenuContent align="end">
 						{table
 							.getAllColumns()
-							.filter(column => column.getCanHide())             
+							.filter(column => column.getCanHide())
 							.map(column => {
 								return (
 									<DropdownMenuCheckboxItem
@@ -97,7 +116,7 @@ export function DataTable<TData, TValue>({
 										checked={column.getIsVisible()}
 										onCheckedChange={value => column.toggleVisibility(!!value)}
 									>
-										{column.id}
+										{rusHeader[column.id]}
 									</DropdownMenuCheckboxItem>
 								);
 							})}
