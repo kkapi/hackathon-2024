@@ -38,4 +38,12 @@ public class WiFiService {
         List<WiFi> wiFis = wiFiRepo.findNeedPoint(coordinates[0], coordinates[1], radius);
         return wiFis;
     }
+
+    public boolean haveWiFi(double[] coordinates) {
+        if(wiFiRepo.findNeedPoint(coordinates[0], coordinates[1], 150).isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

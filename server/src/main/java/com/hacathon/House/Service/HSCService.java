@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class HSCService {
@@ -36,5 +37,13 @@ public class HSCService {
                 hscRepo.save(hsc);
             }
         }
+    }
+
+    public int findPrice(double[] coordinates) {
+        List<HSC> hscs = hscRepo.findPrice(coordinates[0], coordinates[1], 50);
+        if(hscs.isEmpty()) {
+            return -1;
+        }
+        return hscs.get(0).getPrice();
     }
 }

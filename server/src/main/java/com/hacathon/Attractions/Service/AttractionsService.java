@@ -21,9 +21,36 @@ public class AttractionsService {
         int count = 0;
         AttractionsApiGet getApi = null;
         do {
-            getApi = attractionsRequests.attractionsHttp(page);
+            getApi = attractionsRequests.attractionsHttp("https://spb-classif.gate.petersburg.ru/api/v2/datasets/134/versions/latest/data/157/?per_page=100&page=" + page);
             for(Attractions attractions : getApi.getResults()) {
+                attractions.setCategory("Достопримечательность");
                 attractionsRepo.save(attractions);
+            }
+            count = getApi.getCount();
+            page++;
+        } while (page <= (count/100)+1);
+
+        page = 1;
+        count = 0;
+        do {
+            getApi = attractionsRequests.attractionsHttp("https://spb-classif.gate.petersburg.ru/api/v2/datasets/145/versions/latest/data/649/?per_page=100&page=" + page);
+            for(Attractions attractions : getApi.getResults()) {
+                attractions.setCategory("Театр");
+                attractionsRepo.save(attractions);
+            }
+            count = getApi.getCount();
+            page++;
+        } while (page <= (count/100)+1);
+
+        page = 1;
+        count = 0;
+        do {
+            getApi = attractionsRequests.attractionsHttp("https://spb-classif.gate.petersburg.ru/api/v2/datasets/139/versions/latest/data/569/?per_page=100&page=" + page);
+            for(Attractions attractions : getApi.getResults()) {
+                if(attractions.getCoord() != null) {
+                    attractions.setCategory("Музей");
+                    attractionsRepo.save(attractions);
+                }
             }
             count = getApi.getCount();
             page++;
