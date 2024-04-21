@@ -63,7 +63,7 @@ const ApartmentsPage = () => {
 						</h1>
 					)}
 					{info && (
-						<div className="text-3xl font-semibold flex flex-col gap-5">
+						<div className="flex flex-col gap-5">
 							<div>
 								<span className="mr-3">Адрес:</span>
 								{info.address}
@@ -102,15 +102,19 @@ const ApartmentsPage = () => {
 									}
 								})}
 							</div>
-              
-							<Separator className="my-4" />
+
+							<Separator className="my-7" />
+
+							<h1 className="font-semibold text-xl">Спорт площадки:</h1>
 
 							<div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 								{info.sport.map(item => (
-									<Card>
-										<div>1</div>
-										<div>2</div>
-										<div>3</div>
+									<Card className="p-4 flex flex-col gap-3">
+										<div>{item.name}</div>
+										<div>
+											<Badge>{item.categories}</Badge>
+										</div>
+										<div>{item.address}</div>
 									</Card>
 								))}
 							</div>
