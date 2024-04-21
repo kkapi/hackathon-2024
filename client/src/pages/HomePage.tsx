@@ -11,9 +11,11 @@ import { GraduationCap } from 'lucide-react';
 import { CalendarSearch } from 'lucide-react';
 import { Home } from 'lucide-react';
 import { BookOpenText } from 'lucide-react';
+import { useRef } from 'react';
 
 const HomePage = () => {
 	const navigate = useNavigate();
+  const scrollToRef = useRef();
 
 	return (
 		<DefaultLayout>
@@ -45,12 +47,12 @@ const HomePage = () => {
 							'flex w-full items-center justify-center space-x-4 py-4 md:pb-10'
 						)}
 					>
-						<Button onClick={() => {}}>Начать</Button>
-						<Button variant="outline">GitHub</Button>
+						<Button onClick={() => scrollToRef.current.scrollIntoView()}>Начать</Button>
+						<Button onClick={() => location.href="https://github.com/kkapi/hackathon"} variant="outline">GitHub</Button>
 					</div>
 				</section>
 
-				<Separator />
+				<Separator ref={scrollToRef} />
 
 				<div className="mt-12 grid gap-5 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 					<Card

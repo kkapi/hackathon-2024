@@ -25,17 +25,34 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog';
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import { Switch } from '@/components/ui/switch';
 import { $axios } from '@/http';
 import DefaultLayout from '@/layouts/DefaultLayout';
+import { getYandexRouteLink } from '@/utils/helpers';
+import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { MapPin } from 'lucide-react';
 
 const PlacesPage = () => {
 	const [page, setPage] = useState(2);
 	const [cards, setCards] = useState([]);
-	const [curAddress, setCurAddress] = useState('г. Санкт-Петербург, Дворцовая площадь');
+	const [curAddress, setCurAddress] = useState(
+		'г. Санкт-Петербург, Дворцовая площадь'
+	);
 	const [curCords, setCurCords] = useState([59.938991, 30.315473]);
+	const [wifi, setWifi] = useState(false);
+	const [geo, setGeo] = useState(false);
+	const [category, setCategory] = useState('');
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -48,7 +65,16 @@ const PlacesPage = () => {
 	}, []);
 
 	const fetchMoreData = async () => {
-		const { data } = await $axios.get(`/getAttractions?page=${page}`);
+		let url = `/getAttractions?page=${page}`;
+		if (wifi) url += '&hasWiFi=1';
+		if (geo && curCords.length) {
+			url += `&longitude=${curCords[1]}&latitude=${curCords[0]}`;
+		}
+		if (category) {
+			url += `&type=${category}`;
+		}
+
+		const { data } = await $axios.get(url);
 
 		setCards([...cards, ...data]);
 		setPage(prev => prev + 1);
@@ -61,14 +87,14 @@ const PlacesPage = () => {
 					<h1 className="mt-5 text-2xl font-bold leading-tight tracking-tighter md:text-4xl">
 						Интересные места
 					</h1>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-						<div className="flex flex-col gap-5 border border-red-500">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+						<div className="flex flex-col gap-5">
 							<p className="">
 								Узнайте о лучших местах в городе для занятий и работы в удобной
 								и красивой обстановке. Мы предоставили список мест, которые
 								отличаются не только своей привлекательностью, но и обладают
-								такими удобствами, как бесплатные точки доступа Wi-Fi,
-								общественные туалеты и ближайшие станции метро.
+								такими удобствами, как бесплатные точки доступа Wi-Fi и
+								общественные туалеты.
 							</p>
 							<div className="flex flex-row gap-4">
 								<Input
@@ -114,7 +140,80 @@ const PlacesPage = () => {
 								<span className="text-muted-foreground">{curAddress}</span>
 							</div>
 						</div>
-						<div>А што тут типа как будто бы фильтры</div>
+						<div className="flex flex-col gap-5">
+							<div className="flex items-center space-x-2">
+								<Switch
+									id="only-wifi"
+									onCheckedChange={() => setWifi(prev => !prev)}
+								/>
+								<Label htmlFor="only-wifi">Только места с Wi-Fi</Label>
+							</div>
+							<div className="flex items-center space-x-2">
+								<Switch
+									id="geo"
+									onCheckedChange={() => setGeo(prev => !prev)}
+								/>
+								<Label htmlFor="geo">Сначала ближайшие</Label>
+							</div>
+							<DropdownMenu>
+								<DropdownMenuTrigger asChild>
+									<Button variant="outline" className="md:w-1/2">
+										{category || 'Выбрать категорию'}{' '}
+										<ChevronDown className="ml-2 h-4 w-4" />
+									</Button>
+								</DropdownMenuTrigger>
+								<DropdownMenuContent className="w-56">
+									<DropdownMenuRadioGroup
+										value={category}
+										onValueChange={setCategory}
+									>
+										<DropdownMenuRadioItem value="Архитектура">
+											Архитектура
+										</DropdownMenuRadioItem>
+										<DropdownMenuRadioItem value="Природа">
+											Природа
+										</DropdownMenuRadioItem>
+										<DropdownMenuRadioItem value="Развлечения">
+											Развлечения
+										</DropdownMenuRadioItem>
+										<DropdownMenuRadioItem value="Гастрономия">
+											Гастрономия
+										</DropdownMenuRadioItem>
+										<DropdownMenuRadioItem value="Достопримечательность">
+											Достопримечательность
+										</DropdownMenuRadioItem>
+										<DropdownMenuRadioItem value="Музей">
+											Музей
+										</DropdownMenuRadioItem>
+										<DropdownMenuRadioItem value="Театр">
+											Театр
+										</DropdownMenuRadioItem>
+									</DropdownMenuRadioGroup>
+								</DropdownMenuContent>
+							</DropdownMenu>
+							<Button
+								className="md:w-1/2"
+								disabled={!wifi && !geo && !category}
+								onClick={async () => {
+									setPage(1);
+									let url = `/getAttractions?page=${1}`;
+									if (wifi) url += '&hasWiFi=1';
+									if (geo && curCords.length) {
+										url += `&longitude=${curCords[1]}&latitude=${curCords[0]}`;
+									}
+									if (category) {
+										url += `&type=${category}`;
+									}
+
+									const { data } = await $axios.get(url);
+									console.log(data);
+									setCards(data);
+									setPage(prev => prev + 1);
+								}}
+							>
+								Применить фильтры
+							</Button>
+						</div>
 					</div>
 
 					<Separator className="my-8" />
@@ -165,17 +264,24 @@ const PlacesPage = () => {
 										<DialogTitle className="text-xl">
 											{card.beautifulPlace.title}
 										</DialogTitle>
-										<DialogDescription>
-											#{card.beautifulPlace.categories[0]}{' '}
-											{card.wiFi.length > 0 ? '# Wi-Fi' : ''}
+										<DialogDescription className="flex gap-2">
+											<Badge variant="secondary">
+												#{card.beautifulPlace.categories[0]}
+											</Badge>
+
+											{card.wiFi.length > 0 ? (
+												<Badge variant="secondary">#Wi-Fi</Badge>
+											) : (
+												''
+											)}
 										</DialogDescription>
 									</DialogHeader>
 
-									<Separator />
+									<Separator className="mb-4" />
 									<div className="flex flex-col items-center gap-4">
 										<div>
 											<Carousel className="max-w-[50vw] md:max-w-[20vw]">
-												<CarouselContent className="w-full">
+												<CarouselContent className="w-full flex content-center items-center">
 													{card.beautifulPlace.linkToPhotos.map(
 														(img, index) => (
 															<CarouselItem key={index}>
@@ -191,39 +297,83 @@ const PlacesPage = () => {
 												<CarouselNext />
 											</Carousel>
 										</div>
-										<p className="w-[85%]">{card.beautifulPlace.description}</p>
+										<p className="md:px-5">{card.beautifulPlace.description}</p>
 									</div>
-									<Separator />
-									<div className="flex flex-col gap-3 ml-5">
+
+									<Separator className="mb-1" />
+									<div className="flex flex-col gap-3">
 										{card.wiFi.length > 0 && (
-											<div>
-												Wi-Fi
-												{card.wiFi.map((wifi, indx) => (
+											<div className="md:px-5">
+												<div className="font-bold"> Ближайшие Wi-Fi точки</div>
+												{card.wiFi.slice(0, 6).map((wifi, indx) => (
 													<div key={indx}>
-														{wifi.address} {wifi.coordinates.join('')}
-														<Button variant="secondary">Построить</Button>
+														<a
+															href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.316336%2C59.969765&z=14"
+															target="_blank"
+															className="text-muted-foreground transition-colors hover:text-foreground flex gap-2 mb-1"
+														>
+															{wifi.address}
+															<MapPin className="w-4" />
+														</a>
 													</div>
 												))}
 											</div>
 										)}
 
-										<div>
-											Toilet{' '}
-											<div>
-												{card.toilets.address}{' '}
-												<Button variant="secondary">Построить</Button>
-											</div>{' '}
+										<div className="md:px-5">
+											<div className="font-bold">
+												{' '}
+												Ближайший общественный туалет{' '}
+											</div>
+											<a
+												href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.316336%2C59.969765&z=14"
+												target="_blank"
+												className="text-muted-foreground transition-colors hover:text-foreground flex gap-2"
+											>
+												{card.toilets.address}
+												<MapPin className="w-4" />
+											</a>
+										</div>
+
+										<Separator className="my-2" />
+
+										<div className="text-muted-foreground md:px-5">
+											<p className="mb-2 text-muted-foreground">
+												Адрес:{' '}
+												{card.beautifulPlace.address ||
+													card.beautifulPlace.district ||
+													'Санкт-Петербург'}
+											</p>
+											Станция метро "{card.metro.name}"
 										</div>
 									</div>
 									<DialogFooter>
-										<a href="https://ya.ru/" target="_blank">
-											<Button>Построить маршрут</Button>
-										</a>
-										<DialogClose asChild>
-											<Button type="button" variant="secondary">
-												Закрыть
-											</Button>
-										</DialogClose>
+										<div className="flex flex-col gap-2 md:flex-row">
+											<div>
+												<a
+													href={getYandexRouteLink(
+														curCords[0],
+														curCords[1],
+														card.latitude,
+														card.longitude
+													)}
+													target="_blank"
+												>
+													<Button className="w-full">Построить маршрут</Button>
+												</a>
+											</div>
+											<div>
+												<DialogClose asChild>
+													<Button
+														type="button"
+														variant="secondary"
+														className="w-full"
+													>
+														Закрыть
+													</Button>
+												</DialogClose>
+											</div>
+										</div>
 									</DialogFooter>
 								</DialogContent>
 							</Dialog>
