@@ -38,7 +38,7 @@ public class PlaceInStPetersburgService {
             PlaceInStPetersburg place = new PlaceInStPetersburg();
             place.setAttractions(attraction);
             place.setType("Достопримечательность");
-            place.setCategory("Достопримечательность");
+            place.setCategory(attraction.getCategory());
             place.setLongitude(attraction.getCoord()[0]);
             place.setLatitude(attraction.getCoord()[1]);
             place.setMetro(metroService.findNear(attraction.getCoord()));
@@ -89,6 +89,21 @@ public class PlaceInStPetersburgService {
 
     public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithTypeWithWiFi(double longitude, double latitude, int page, String type) {
         List<PlaceInStPetersburg> place = placeRepo.findNearByCategory(longitude,latitude, type, PageRequest.of(page, 9));
+        ListIterator<PlaceInStPetersburg> iterator = place.listIterator();
+        for (ListIterator<PlaceInStPetersburg> it = iterator; it.hasNext(); ) {
+            PlaceInStPetersburg p = it.next();
+            if(p.getWiFi().size() == 0)
+                it.remove();
+        }
+        return place;
+    }
+
+    public List<PlaceInStPetersburg> findPlaceWithCoordinatesAll(double[] coordinates, int radius) {
+        return placeRepo.findNearAll(coordinates[0], coordinates[1], radius);
+    }
+
+    public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithTypeWithWiFiType(double longitude, double latitude, int page, String type) {
+        List<PlaceInStPetersburg> place = placeRepo.findNearByType(longitude,latitude, type, PageRequest.of(page, 9));
         ListIterator<PlaceInStPetersburg> iterator = place.listIterator();
         for (ListIterator<PlaceInStPetersburg> it = iterator; it.hasNext(); ) {
             PlaceInStPetersburg p = it.next();

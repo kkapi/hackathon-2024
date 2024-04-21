@@ -77,6 +77,8 @@ public class Attractions {
     private double lon;
     private double lat;
 
+    private String category;
+
     public void inArray(){
         this.coord = new double[2];
         coord[0] = lon;
@@ -235,6 +237,31 @@ public class Attractions {
 
     public void setCoord(double[] coord) {
         this.coord = coord;
-        outArray();
+        if(this.coord != null)
+            outArray();
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

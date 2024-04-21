@@ -26,4 +26,10 @@ public interface PlaceInStPetersburgRepo extends JpaRepository<PlaceInStPetersbu
             "WHERE t.type = :beautifulPlace " +
             "order by sqrt(((t.latitude - :latitude)*111153)*((t.latitude - :latitude)*111153) + ((t.longitude - :longitude)*62555)*((t.longitude - :longitude)*62555))")
     List<PlaceInStPetersburg> findNearByType(double longitude, double latitude, String beautifulPlace, PageRequest of);
+
+    @Query(value = "SELECT t " +
+            "FROM PlaceInStPetersburg t " +
+            "WHERE sqrt(((t.latitude - :latitude)*111153)*((t.latitude - :latitude)*111153) + ((t.longitude - :longitude)*62555)*((t.longitude - :longitude)*62555)) < :radius " +
+            "order by sqrt(((t.latitude - :latitude)*111153)*((t.latitude - :latitude)*111153) + ((t.longitude - :longitude)*62555)*((t.longitude - :longitude)*62555))")
+    List<PlaceInStPetersburg> findNearAll(double longitude, double latitude, int radius);
 }
