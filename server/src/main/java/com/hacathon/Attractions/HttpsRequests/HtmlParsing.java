@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Данный класс получает информацию с html страниц
+ */
 public class HtmlParsing {
     private ApiGeocoder apiGeocoder = new ApiGeocoder();
 

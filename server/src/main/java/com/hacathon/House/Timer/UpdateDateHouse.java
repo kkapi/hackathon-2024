@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * Класс с методоми запускающимися по таймеру, необходим для автоматического обновления данных об ЖКХ
+ */
 @Component
 public class UpdateDateHouse {
     @Autowired

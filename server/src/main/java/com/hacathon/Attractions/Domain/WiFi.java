@@ -3,8 +3,9 @@ package com.hacathon.Attractions.Domain;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.*;
 
-import java.util.List;
-
+/**
+ * Данный класс хранит информацию о точках Wi-Fi
+ */
 @Entity
 public class WiFi {
     @Id

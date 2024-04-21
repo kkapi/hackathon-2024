@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * Данный интерфейс используется для доступа к БД Wi_Fi
+ */
 public interface WiFiRepo extends JpaRepository<WiFi, Long> {
     List<WiFi> findAll();
 

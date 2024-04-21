@@ -3,6 +3,9 @@ package com.hacathon.Admission.Domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+/**
+ * Данный класс содержит информацию о профессии
+ */
 @Entity
 public class Profession {
     @Id

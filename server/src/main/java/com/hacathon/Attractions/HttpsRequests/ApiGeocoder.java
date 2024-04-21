@@ -10,6 +10,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Данный класс содержит https запросы в API Геокодер
+ */
 public class ApiGeocoder {
 
     public double[] ApiGeoCodeJustAbout(String address){

@@ -4,6 +4,9 @@ import com.hacathon.Attractions.Domain.PlaceInStPetersburg;
 
 import java.util.List;
 
+/**
+ * Класс хранит подготовленную для отправки информацию по оценке жилья
+ */
 public class InformationHouse {
     private int price;
     private boolean haveWiFi;

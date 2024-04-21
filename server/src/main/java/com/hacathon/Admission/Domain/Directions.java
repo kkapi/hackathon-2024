@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 
 import java.util.*;
 
+/**
+ * Данный класс содержит информацию о направлениях подготовки
+ */
 @Entity
 public class Directions {
     @Id

@@ -2,7 +2,6 @@ package com.hacathon.Admission.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hacathon.Admission.Domain.Directions;
-import com.hacathon.Admission.Domain.Profession;
 import com.hacathon.Admission.Domain.Vacancies;
 import com.hacathon.Admission.Repos.DirectionsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
+/**
+ * Сервис, содержит логику для класса Directions, используется для связи с соответствубщей БД из других частей программы
+ */
 @Service
 public class DirectionsService {
     @Autowired

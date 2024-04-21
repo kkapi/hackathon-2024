@@ -11,6 +11,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс хранит https запросы к API Спортплощадки
+ */
 public class SportRequest {
     public List<Sport> sportHttp(double longitude, double latitude, int radius) {
         RestTemplate restTemplate = new RestTemplate();

@@ -7,6 +7,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Данный класс содержит https запросы к API Бесплатный Wi-Fi Спб
+ */
 public class WiFiRequests {
 
     public WiFiApiGet wiFiHttp(int page) {

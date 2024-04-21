@@ -3,6 +3,9 @@ package com.hacathon.House.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+/**
+ * Класс хранит информацию об платежах ЖКХ
+ */
 @Entity
 public class HSC {
     @Id

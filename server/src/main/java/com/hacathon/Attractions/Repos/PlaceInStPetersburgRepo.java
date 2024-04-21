@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * Данный интерфейс используется для доступа к БД Place_in_st_petersburg
+ */
 public interface PlaceInStPetersburgRepo extends JpaRepository<PlaceInStPetersburg, Long> {
     @Query(value = "SELECT t " +
             "FROM PlaceInStPetersburg t " +

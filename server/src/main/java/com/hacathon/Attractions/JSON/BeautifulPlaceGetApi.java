@@ -5,8 +5,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
 /**
- * Класс необходимый для полученния данных с API красивые места
- * @author Nair Irgalin
+ * Данный класс необходим для преобразования данных из JSON
  */
 public class BeautifulPlaceGetApi {
     @JsonSetter("count")

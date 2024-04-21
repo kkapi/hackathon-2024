@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * Класс содержит методы, запускаемые по таймеру и занимающиеся обновлением данных
+ */
 @Component
 public class UpdateAdmissionData {
     @Autowired

@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Данный контроллер предоставляет информацию о достопримечательностях и красивых местах СПб
+ */
 @RestController
 public class AttractionsConnector {
     @Autowired

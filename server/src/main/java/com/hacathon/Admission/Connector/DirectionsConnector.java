@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Данный контроллер предоставляет информацию о направлениях для поступления
+ */
 @RestController
 public class DirectionsConnector {
     @Autowired

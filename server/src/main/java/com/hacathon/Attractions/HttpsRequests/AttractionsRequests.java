@@ -8,6 +8,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Данный класс содержит https запросы к API Достопримечательности, музеи и театры, а также к API Красивые места
+ */
 public class AttractionsRequests {
 
     public BeautifulPlaceGetApi beautifulPlaces(int page) {
