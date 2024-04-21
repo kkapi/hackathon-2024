@@ -90,7 +90,7 @@ public class PlaceInStPetersburgService {
     }
 
     public List<PlaceInStPetersburg> findPlaceWithCoordinatesAll(double[] coordinates, int radius) {
-        return placeRepo.findNearAll(coordinates[0], coordinates[1], radius);
+        return placeRepo.findNearAll(coordinates[0], coordinates[1], radius, PageRequest.of(1, 9));
     }
 
     public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithTypeWithWiFiType(double longitude, double latitude, int page, String type) {

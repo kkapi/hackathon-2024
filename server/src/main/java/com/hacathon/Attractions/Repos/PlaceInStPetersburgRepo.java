@@ -40,7 +40,7 @@ public interface PlaceInStPetersburgRepo extends JpaRepository<PlaceInStPetersbu
             "FROM PlaceInStPetersburg t " +
             "WHERE sqrt(((t.latitude - :latitude)*62555)*((t.latitude - :latitude)*62555) + ((t.longitude - :longitude)*111153)*((t.longitude - :longitude)*111153)) < :radius " +
             "order by sqrt(((t.latitude - :latitude)*62555)*((t.latitude - :latitude)*62555) + ((t.longitude - :longitude)*111153)*((t.longitude - :longitude)*111153))")
-    List<PlaceInStPetersburg> findNearAll(double longitude, double latitude, int radius);
+    List<PlaceInStPetersburg> findNearAll(double longitude, double latitude, int radius, PageRequest of);
 
     @Query(value = "SELECT t " +
             "FROM PlaceInStPetersburg t " +

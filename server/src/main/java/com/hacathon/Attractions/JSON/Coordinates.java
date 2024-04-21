@@ -12,6 +12,9 @@ public class Coordinates {
     @JsonSetter("latitude")
     private double latitude;
 
+    @JsonSetter("name")
+    private String address;
+
     public Coordinates() {
     }
 
@@ -29,5 +32,13 @@ public class Coordinates {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
