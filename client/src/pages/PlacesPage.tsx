@@ -1,3 +1,4 @@
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
 	Card,
@@ -33,6 +34,8 @@ import { useEffect, useState } from 'react';
 const PlacesPage = () => {
 	const [page, setPage] = useState(2);
 	const [cards, setCards] = useState([]);
+	const [curAddress, setCurAddress] = useState('г. Санкт-Петербург, Дворцовая площадь');
+	const [curCords, setCurCords] = useState([59.938991, 30.315473]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -46,7 +49,7 @@ const PlacesPage = () => {
 
 	const fetchMoreData = async () => {
 		const { data } = await $axios.get(`/getAttractions?page=${page}`);
-    
+
 		setCards([...cards, ...data]);
 		setPage(prev => prev + 1);
 	};
@@ -58,15 +61,63 @@ const PlacesPage = () => {
 					<h1 className="mt-5 text-2xl font-bold leading-tight tracking-tighter md:text-4xl">
 						Интересные места
 					</h1>
-					<p className="md:w-1/2">
-						Узнайте о лучших местах в городе для занятий и работы в удобной и
-						красивой обстановке. Мы предоставили список мест, которые отличаются
-						не только своей привлекательностью, но и обладают такими удобствами,
-						как бесплатные точки доступа Wi-Fi, общественные туалеты и ближайшие
-						станции метро.
-					</p>
-					<Input placeholder="Введите свое местоположение..." />
-					<Separator />
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+						<div className="flex flex-col gap-5 border border-red-500">
+							<p className="">
+								Узнайте о лучших местах в городе для занятий и работы в удобной
+								и красивой обстановке. Мы предоставили список мест, которые
+								отличаются не только своей привлекательностью, но и обладают
+								такими удобствами, как бесплатные точки доступа Wi-Fi,
+								общественные туалеты и ближайшие станции метро.
+							</p>
+							<div className="flex flex-row gap-4">
+								<Input
+									className="w-[90%]"
+									placeholder="Введите свое местоположение..."
+								/>
+							</div>
+							<Button
+								onClick={() => {
+									navigator.geolocation.getCurrentPosition(success, error, {
+										// высокая точность
+										enableHighAccuracy: true,
+									});
+
+									async function success({ coords }) {
+										// получаем широту и долготу
+										const { latitude, longitude } = coords;
+										const position = [latitude, longitude];
+										setCurCords([longitude, latitude]);
+
+										const { data } = await $axios.get(
+											`https://geocode.gate.petersburg.ru/geocode/reverse?x=${longitude}&y=${latitude}`
+										);
+										console.log(data?.address); // [широта, долгота]
+										if (data?.address) {
+											setCurAddress(data.address);
+										}
+									}
+
+									function error({ message }) {
+										console.log(message); // при отказе в доступе получаем PositionError: User denied Geolocation
+									}
+								}}
+								className="w-52"
+							>
+								Определить геолокацию
+							</Button>
+							<div>
+								{' '}
+								<span className="font-semibold">
+									Текущее местоположение:
+								</span>{' '}
+								<span className="text-muted-foreground">{curAddress}</span>
+							</div>
+						</div>
+						<div>А што тут типа как будто бы фильтры</div>
+					</div>
+
+					<Separator className="my-8" />
 					<div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 						{cards.map(card => (
 							<Dialog key={card.id}>
@@ -74,9 +125,15 @@ const PlacesPage = () => {
 									<Card className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out">
 										<CardHeader>
 											<CardTitle>{card.beautifulPlace.title} </CardTitle>
-											<CardDescription>
-												#{card.beautifulPlace.categories[0]}{' '}
-												{card.wiFi.length > 0 ? '#Wi-Fi' : ''}
+											<CardDescription className="flex gap-2 pt-2">
+												<Badge variant="secondary">
+													#{card.beautifulPlace.categories[0]}{' '}
+												</Badge>
+												{card.wiFi.length > 0 ? (
+													<Badge variant="secondary">#Wi-Fi</Badge>
+												) : (
+													''
+												)}
 											</CardDescription>
 										</CardHeader>
 										<CardContent className="flex flex-row content-center items-start gap-5 md:flex-col md:items-center">
@@ -113,6 +170,7 @@ const PlacesPage = () => {
 											{card.wiFi.length > 0 ? '# Wi-Fi' : ''}
 										</DialogDescription>
 									</DialogHeader>
+
 									<Separator />
 									<div className="flex flex-col items-center gap-4">
 										<div>
@@ -136,7 +194,7 @@ const PlacesPage = () => {
 										<p className="w-[85%]">{card.beautifulPlace.description}</p>
 									</div>
 									<Separator />
-									<div className="flex flex-col gap-3 ml-5">                    
+									<div className="flex flex-col gap-3 ml-5">
 										{card.wiFi.length > 0 && (
 											<div>
 												Wi-Fi
