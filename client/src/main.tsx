@@ -10,6 +10,7 @@ import { ThemeProvider } from './components/ThemeProvider.tsx';
 import UniversitiesPage from './pages/UniversitiesPage.tsx';
 import ApartmentsPage from './pages/ApartmentsPage.tsx';
 import AdditionalEducationPage from './pages/AdditionalEducationPage.tsx';
+import ChangeDirectionPage from './pages/ChangeDirectionPage.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
 		path: '/universities',
 		element: <UniversitiesPage />,
 	},
+  {
+    path: '/change',
+    element: <ChangeDirectionPage />
+  },
 	{
 		path: '/activities',
 		element: <ActivitiesPage />,
