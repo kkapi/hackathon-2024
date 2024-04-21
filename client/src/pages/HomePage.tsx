@@ -119,28 +119,10 @@ const HomePage = () => {
 								Раздел "Подбор программы обучения" предназначен для помощи
 								студентам при переходе с одной программы обучения на другую с
 								учетом различных факторов. Здесь вы сможете найти информацию о
-								подходящих программных курсах, учитывая ваши
-								учебные планы и желаемую профессию.
+								подходящих программных курсах, учитывая ваши учебные планы и
+								желаемую профессию.
 							</p>
 							<Replace className="w-1/6 h-auto" />
-						</CardContent>
-					</Card>
-					<Card
-						onClick={() => navigate('/activities')}
-						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
-					>
-						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle className="text-xl font-medium">Мероприятия</CardTitle>
-						</CardHeader>
-						<CardContent className="flex items-center justify-center gap-4">
-							<p className="text-xs text-muted-foreground w-5/6">
-								Найдите разнообразные мероприятия, которые помогут развивать
-								ваши профессиональные навыки. Наша платформа учитывает близость
-								к вашему дому, работе или учебе, а также место проведения
-								занятий, чтобы предложить наиболее удобные и полезные
-								мероприятия для вас.
-							</p>
-							<CalendarSearch className="w-1/6 h-auto" />
 						</CardContent>
 					</Card>
 					<Card
@@ -162,6 +144,25 @@ const HomePage = () => {
 							<Home className="w-1/6 h-auto" />
 						</CardContent>
 					</Card>
+					<Card
+						onClick={() => navigate('/activities')}
+						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
+					>
+						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+							<CardTitle className="text-xl font-medium">Мероприятия</CardTitle>
+						</CardHeader>
+						<CardContent className="flex items-center justify-center gap-4">
+							<p className="text-xs text-muted-foreground w-5/6">
+								Найдите разнообразные мероприятия, которые помогут развивать
+								ваши профессиональные навыки. Наша платформа учитывает близость
+								к вашему дому, работе или учебе, а также место проведения
+								занятий, чтобы предложить наиболее удобные и полезные
+								мероприятия для вас.
+							</p>
+							<CalendarSearch className="w-1/6 h-auto" />
+						</CardContent>
+					</Card>
+
 					<Card
 						onClick={() => navigate('/education')}
 						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
