@@ -38,10 +38,10 @@ import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
 import { $axios } from '@/http';
 import DefaultLayout from '@/layouts/DefaultLayout';
-import { getYandexRouteLink } from '@/utils/helpers';
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { MapPin } from 'lucide-react';
+import { getYandexRouteLink } from '@/utils/helpers';
 
 const PlacesPage = () => {
 	const [page, setPage] = useState(2);
@@ -49,7 +49,7 @@ const PlacesPage = () => {
 	const [curAddress, setCurAddress] = useState(
 		'г. Санкт-Петербург, Дворцовая площадь'
 	);
-	const [curCords, setCurCords] = useState([59.938991, 30.315473]);
+	const [curCords, setCurCords] = useState([30.315473, 59.938991]);
 	const [wifi, setWifi] = useState(false);
 	const [geo, setGeo] = useState(false);
 	const [category, setCategory] = useState('');
@@ -112,6 +112,7 @@ const PlacesPage = () => {
 									async function success({ coords }) {
 										// получаем широту и долготу
 										const { latitude, longitude } = coords;
+										console.log({ latitude, longitude });
 										const position = [latitude, longitude];
 										setCurCords([longitude, latitude]);
 
@@ -352,10 +353,10 @@ const PlacesPage = () => {
 											<div>
 												<a
 													href={getYandexRouteLink(
-														curCords[0],
 														curCords[1],
-														card.latitude,
-														card.longitude
+														curCords[0],
+														card.longitude,
+														card.latitude
 													)}
 													target="_blank"
 												>
