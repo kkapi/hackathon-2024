@@ -27,11 +27,17 @@ const Header = () => {
 				>
 					Поступление в ВУЗ
 				</Link>
-        <Link
+				<Link
 					to="/change"
 					className="text-muted-foreground transition-colors hover:text-foreground"
 				>
 					Смена направления
+				</Link>
+				<Link
+					to="/apartments"
+					className="text-muted-foreground transition-colors hover:text-foreground"
+				>
+					Подбор жилья
 				</Link>
 				<Link
 					to="/activities"
@@ -39,12 +45,7 @@ const Header = () => {
 				>
 					Мероприятия
 				</Link>
-				<Link
-					to="/apartments"
-					className="text-muted-foreground transition-colors hover:text-foreground"
-				>
-					Подбор жилья
-				</Link>				
+
 				<ModeToggle />
 			</nav>
 			<Sheet>
@@ -63,20 +64,23 @@ const Header = () => {
 							<NotebookPen className="h-7 w-7" />
 							<span>Ассистент студента</span>
 						</Link>
-						<Link to="/places" className="text-muted-foreground hover:text-foreground">
+						<Link
+							to="/places"
+							className="text-muted-foreground hover:text-foreground"
+						>
 							Интересные места
 						</Link>
 						<Link
 							to="/universities"
 							className="text-muted-foreground hover:text-foreground"
 						>
-							Поступление
+							Поступление в ВУЗ
 						</Link>
 						<Link
-							to="/activities"
+							to="/change"
 							className="text-muted-foreground hover:text-foreground"
 						>
-							Мероприятия
+							Смена направления
 						</Link>
 						<Link
 							to="/apartments"
@@ -84,6 +88,14 @@ const Header = () => {
 						>
 							Подбор жилья
 						</Link>
+
+						<Link
+							to="/activities"
+							className="text-muted-foreground hover:text-foreground"
+						>
+							Мероприятия
+						</Link>
+
 						<Link
 							to="/education"
 							className="text-muted-foreground hover:text-foreground"
@@ -93,7 +105,7 @@ const Header = () => {
 					</nav>
 				</SheetContent>
 			</Sheet>
-			<span className='ml-auto md:hidden'>
+			<span className="ml-auto md:hidden">
 				<ModeToggle />
 			</span>
 		</header>

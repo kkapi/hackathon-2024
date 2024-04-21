@@ -31,6 +31,7 @@ export type Direction = {
 	contestBudget: number;
 	contestContract: number;
 	profession: Profession[];
+  professionString: string;
 };
 
 export const columns: ColumnDef<Direction>[] = [
