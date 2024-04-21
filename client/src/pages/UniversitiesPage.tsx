@@ -24,7 +24,7 @@ const UniversitiesPage = () => {
 
 	return (
 		<DefaultLayout>
-			<div className="container relative">
+			<div className="container relative min-h-[100vh]">
 				<div className="flex flex-col gap-5">
 					<h1 className="mt-5 text-2xl font-bold leading-tight tracking-tighter md:text-4xl">
 						Поступление

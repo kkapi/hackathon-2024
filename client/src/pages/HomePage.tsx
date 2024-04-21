@@ -52,13 +52,15 @@ const HomePage = () => {
 
 				<Separator />
 
-				<div className="mt-12 grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+				<div className="mt-12 grid gap-5 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 					<Card
 						onClick={() => navigate('/places')}
 						className="hover:cursor-pointer hover:border-blue-300 hover:bg-muted transition-colors duration-300 ease-in-out"
 					>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle className="text-xl font-medium">Интересные места</CardTitle>
+							<CardTitle className="text-xl font-medium">
+								Интересные места
+							</CardTitle>
 						</CardHeader>
 						<CardContent className="flex items-center justify-center gap-4">
 							<p className="text-xs text-muted-foreground w-5/6">
@@ -137,15 +139,59 @@ const HomePage = () => {
 						</CardHeader>
 						<CardContent className="flex items-center justify-center gap-4">
 							<p className="text-xs text-muted-foreground w-5/6">
-								Ознакомьтесь с программами
-								дополнительного образования для студентов. Откройте широкий
-								спектр курсов, мастер-классов и возможностей углубленного
-								обучения, предназначенных для улучшения академических
-								результатов, расширения кругозора и развития личности.
+								Ознакомьтесь с программами дополнительного образования для
+								студентов. Откройте широкий спектр курсов, мастер-классов и
+								возможностей углубленного обучения, предназначенных для
+								улучшения академических результатов, расширения кругозора и
+								развития личности.
 							</p>
 							<BookOpenText className="w-1/6 h-auto" />
 						</CardContent>
 					</Card>
+				</div>
+				<Separator className="mt-12 " />
+
+				<div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 md:mt-24 md:mb-12">
+					<div className="flex flex-col items-center gap-4">
+						<h1 className="text-xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
+							Хакатон ПРОСТОxЛЭТИ
+						</h1>
+						<Balance
+							className={cn(
+								'max-w-[750px] text-center text-sm text-muted-foreground'
+							)}
+						>
+							Данный цифровой сервис был реализован в рамках двухдневного{' '}
+							<a
+								href={'https://www.prostospb.team/hackaton_etu'}
+								target="_blank"
+								rel="noreferrer"
+								className="font-medium underline underline-offset-4"
+							>
+								хакатона
+							</a>
+							, проходящего с 20 по 21 апреля в молодежном пространстве "ПРОСТО"
+							на Карповке. Номинация «Лучший цифровой сервис
+							Санкт-Петербурга»
+						</Balance>
+					</div>
+					<div className="flex flex-col items-center gap-4">
+						<h1 className="text-xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
+							Марафон "Цифровой Петербург"
+						</h1>
+						<Balance
+							className={cn(
+								'max-w-[750px] text-center text-sm text-muted-foreground'
+							)}
+						>
+							Конкурс «Марафон «Цифровой Петербург» проводится в два этапа с 12
+							по 21 апреля 2024 года. Организаторами Марафона выступают СПбГЭТУ
+							«ЛЭТИ», Цифровая кафедра университета, ГУП Санкт-Петербургский
+							информационно-аналитический центр (СПб ИАЦ), ООО «СИГМА» и
+							молодёжное пространство «ПРОСТО». Технологический партнер конкурса
+							– Yandex Cloud.
+						</Balance>
+					</div>
 				</div>
 			</div>
 		</DefaultLayout>
