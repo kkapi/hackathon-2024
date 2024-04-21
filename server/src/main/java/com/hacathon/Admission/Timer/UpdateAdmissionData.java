@@ -20,7 +20,7 @@ public class UpdateAdmissionData {
     @Autowired
     private VacanciesService vacanciesService;
 
-    @Scheduled(fixedDelay = 3600000)
+    //@Scheduled(fixedDelay = 3600000)
     public void update() throws IOException, CsvValidationException {
         directionsService.updateDate();
         vacanciesService.updateData();

@@ -16,7 +16,7 @@ public class UpdateDateHouse {
     @Autowired
     private HSCService service;
 
-    @Scheduled(fixedDelay = 3600000)
+    //@Scheduled(fixedDelay = 3600000)
     public void update() throws CsvValidationException, IOException {
         service.update();
     }
