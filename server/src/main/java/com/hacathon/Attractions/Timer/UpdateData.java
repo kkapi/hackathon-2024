@@ -30,14 +30,14 @@ public class UpdateData {
     @Autowired
     private PlaceInStPetersburgService stPetersburgService;
 
-    //@Scheduled(fixedDelay = 3600000)
+    @Scheduled(fixedDelay = 3600000)
     public void update() throws IOException {
         System.out.println("Начинается обновление данных");
-        wiFiService.updateData();
-        toiletService.updateData();
-        metroService.updateData();
-        attractionsService.updateData();
-        beautifulPlaceService.updateData();
+        //wiFiService.updateData();
+        //toiletService.updateData();
+        //metroService.updateData();
+        //attractionsService.updateData();
+        //beautifulPlaceService.updateData();
         stPetersburgService.updateData();
         System.out.println("Обновление данных завершено");
     }

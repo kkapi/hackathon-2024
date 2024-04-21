@@ -33,6 +33,8 @@ public class PlaceInStPetersburg {
     @ManyToMany
     private List<WiFi> wiFi;
 
+    private int countWiFi = 0;
+
     public PlaceInStPetersburg() {
     }
 
@@ -106,6 +108,9 @@ public class PlaceInStPetersburg {
 
     public void setWiFi(List<WiFi> wiFi) {
         this.wiFi = wiFi;
+        if(!wiFi.isEmpty()) {
+            this.countWiFi = wiFi.size();
+        }
     }
 
     public Toilet getToilets() {
@@ -114,5 +119,13 @@ public class PlaceInStPetersburg {
 
     public void setToilets(Toilet toilets) {
         this.toilets = toilets;
+    }
+
+    public int getCountWiFi() {
+        return countWiFi;
+    }
+
+    public void setCountWiFi(int countWiFi) {
+        this.countWiFi = countWiFi;
     }
 }

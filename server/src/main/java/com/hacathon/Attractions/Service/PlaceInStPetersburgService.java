@@ -80,24 +80,12 @@ public class PlaceInStPetersburgService {
     }
 
     public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithWiFi(double longitude, double latitude, int page) {
-        List<PlaceInStPetersburg> place = placeRepo.findNear(longitude, latitude, PageRequest.of(page, 9));
-        ListIterator<PlaceInStPetersburg> iterator = place.listIterator();
-        for (ListIterator<PlaceInStPetersburg> it = iterator; it.hasNext(); ) {
-            PlaceInStPetersburg p = it.next();
-            if(p.getWiFi().size() == 0)
-                it.remove();
-        }
+        List<PlaceInStPetersburg> place = placeRepo.findNearWithWiFi(longitude, latitude, PageRequest.of(page, 9));
         return place;
     }
 
     public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithTypeWithWiFi(double longitude, double latitude, int page, String type) {
-        List<PlaceInStPetersburg> place = placeRepo.findNearByCategory(longitude,latitude, type, PageRequest.of(page, 9));
-        ListIterator<PlaceInStPetersburg> iterator = place.listIterator();
-        for (ListIterator<PlaceInStPetersburg> it = iterator; it.hasNext(); ) {
-            PlaceInStPetersburg p = it.next();
-            if(p.getWiFi().size() == 0)
-                it.remove();
-        }
+        List<PlaceInStPetersburg> place = placeRepo.findNearByCategoryWithWiFi(longitude,latitude, type, PageRequest.of(page, 9));
         return place;
     }
 
@@ -106,13 +94,7 @@ public class PlaceInStPetersburgService {
     }
 
     public List<PlaceInStPetersburg> findPlaceWithCoordinatesWithTypeWithWiFiType(double longitude, double latitude, int page, String type) {
-        List<PlaceInStPetersburg> place = placeRepo.findNearByType(longitude,latitude, type, PageRequest.of(page, 9));
-        ListIterator<PlaceInStPetersburg> iterator = place.listIterator();
-        for (ListIterator<PlaceInStPetersburg> it = iterator; it.hasNext(); ) {
-            PlaceInStPetersburg p = it.next();
-            if(p.getWiFi().size() == 0)
-                it.remove();
-        }
+        List<PlaceInStPetersburg> place = placeRepo.findNearByTypeWithWiFi(longitude,latitude, type, PageRequest.of(page, 9));
         return place;
     }
 }
