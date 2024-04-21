@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Navigation } from 'lucide-react';
 import {
 	Card,
 	CardContent,
@@ -41,7 +42,7 @@ import DefaultLayout from '@/layouts/DefaultLayout';
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { MapPin } from 'lucide-react';
-import { getYandexRouteLink } from '@/utils/helpers';
+import { getDistance, getYandexRouteLink } from '@/utils/helpers';
 
 const PlacesPage = () => {
 	const [page, setPage] = useState(2);
@@ -53,6 +54,7 @@ const PlacesPage = () => {
 	const [wifi, setWifi] = useState(false);
 	const [geo, setGeo] = useState(false);
 	const [category, setCategory] = useState('');
+	const [newAdress, setNewAddress] = useState('');
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -100,7 +102,26 @@ const PlacesPage = () => {
 								<Input
 									className="w-[90%]"
 									placeholder="Введите свое местоположение..."
+									onChange={event => {
+										setNewAddress(event.target.value);
+									}}
+									value={newAdress}
 								/>
+								<Button
+									onClick={async () => {
+										let { data } = await $axios.get(
+											`https://geocode.gate.petersburg.ru/autocomplete/universal?s=${newAdress}`
+										);
+										setNewAddress('');
+										data = data.filter(item => item.hasOwnProperty('name'));
+										if (data.length) {
+											setCurAddress(data[0].name);
+                      setCurCords([data[0].longitude, data[0].latitude])
+										}
+									}}
+								>
+									Сохранить
+								</Button>
 							</div>
 							<Button
 								onClick={() => {
@@ -234,6 +255,16 @@ const PlacesPage = () => {
 												) : (
 													''
 												)}
+												<Badge>
+													<Navigation className="w-4 mr-1" />{' '}
+													{getDistance(
+														curCords[1],
+														curCords[0],
+														card.longitude,
+														card.latitude
+													)}{' '}
+													от вас
+												</Badge>
 											</CardDescription>
 										</CardHeader>
 										<CardContent className="flex flex-row content-center items-start gap-5 md:flex-col md:items-center">
@@ -250,13 +281,16 @@ const PlacesPage = () => {
 													: card.beautifulPlace.description}
 											</p>
 										</CardContent>
-										<CardFooter>
-											<p className="text-sm text-muted-foreground">
-												Адрес:{' '}
-												{card.beautifulPlace.address ||
-													card.beautifulPlace.district ||
-													'Санкт-Петербург'}
-											</p>
+										<CardFooter className="block">
+											<div>
+												<p className="text-sm text-muted-foreground">
+													Адрес:{' '}
+													{card.beautifulPlace.address ||
+														card.beautifulPlace.district ||
+														'Санкт-Петербург'}
+												</p>
+											</div>
+											<div></div>
 										</CardFooter>
 									</Card>
 								</DialogTrigger>
@@ -309,12 +343,25 @@ const PlacesPage = () => {
 												{card.wiFi.slice(0, 6).map((wifi, indx) => (
 													<div key={indx}>
 														<a
-															href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.316336%2C59.969765&z=14"
+															href={getYandexRouteLink(
+																curCords[1],
+																curCords[0],
+																wifi.lon,
+																wifi.lat
+															)}
 															target="_blank"
 															className="text-muted-foreground transition-colors hover:text-foreground flex gap-2 mb-1"
 														>
 															{wifi.address}
 															<MapPin className="w-4" />
+															<Badge variant="secondary">
+																{getDistance(
+																	card.longitude,
+																	card.latitude,
+																	wifi.lon,
+																	wifi.lat
+																)}
+															</Badge>
 														</a>
 													</div>
 												))}
@@ -327,18 +374,41 @@ const PlacesPage = () => {
 												Ближайший общественный туалет{' '}
 											</div>
 											<a
-												href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.316336%2C59.969765&z=14"
+												href={getYandexRouteLink(
+													curCords[1],
+													curCords[0],
+													card.toilets.lon,
+													card.toilets.lat
+												)}
 												target="_blank"
 												className="text-muted-foreground transition-colors hover:text-foreground flex gap-2"
 											>
 												{card.toilets.address}
 												<MapPin className="w-4" />
+												<Badge variant="secondary">
+													{getDistance(
+														card.longitude,
+														card.latitude,
+														card.toilets.lon,
+														card.toilets.lat
+													)}
+												</Badge>
 											</a>
 										</div>
 
 										<Separator className="my-2" />
 
 										<div className="text-muted-foreground md:px-5">
+											<Badge className="mb-2">
+												<Navigation className="w-4 mr-1" />{' '}
+												{getDistance(
+													curCords[1],
+													curCords[0],
+													card.longitude,
+													card.latitude
+												)}{' '}
+												от вас
+											</Badge>
 											<p className="mb-2 text-muted-foreground">
 												Адрес:{' '}
 												{card.beautifulPlace.address ||
