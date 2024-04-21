@@ -106,4 +106,16 @@ public class SubjectService {
         }
         return subjects;
     }
+
+    public List<String> getPlans() throws IOException, CsvValidationException {
+        Set<String> plans = new HashSet<>();
+        BufferedReader in = new BufferedReader(new FileReader("src/main/resources/DataCSV/subject.csv"));
+        in.readLine();
+        while (in.ready()) {
+            CSVReader csvReader = new CSVReader(in);
+            String[] split = csvReader.readNext();
+            plans.add(split[5]);
+        }
+        return plans.stream().toList();
+    }
 }

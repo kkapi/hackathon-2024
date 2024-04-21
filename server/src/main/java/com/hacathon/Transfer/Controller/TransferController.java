@@ -24,4 +24,9 @@ public class TransferController {
     public List<Directions> getTransfer(@RequestParam String profession, @RequestParam String plan) throws CsvValidationException, IOException {
         return service.findDirections(profession, plan);
     }
+
+    @GetMapping("/getPlans")
+    public List<String> getPlans() throws CsvValidationException, IOException {
+        return service.getPlans();
+    }
 }
