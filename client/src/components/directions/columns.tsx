@@ -37,6 +37,9 @@ export const columns: ColumnDef<Direction>[] = [
 	{
 		accessorKey: 'number',
 		header: 'Номер направления',
+    cell: ({ row }) => {
+			return <Badge variant="secondary">{row.getValue('number')}</Badge>
+		},
 	},
 	{
 		accessorKey: 'direction',
@@ -59,6 +62,9 @@ export const columns: ColumnDef<Direction>[] = [
         </Button>
       )
     },
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('placeBudget')}</div>
+		},
 	},
 	{
 		accessorKey: 'placeContract',
@@ -73,6 +79,9 @@ export const columns: ColumnDef<Direction>[] = [
         </Button>
       )
     },
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('placeContract')}</div>
+		},
 	},
 	{
 		accessorKey: 'price',
@@ -94,32 +103,50 @@ export const columns: ColumnDef<Direction>[] = [
 				currency: 'RUB',
 			}).format(amount);
 
-			return <div className="text-right font-medium">{formatted}</div>;
+			return <div className="text-center font-medium">{formatted}</div>;
 		},
 	},
 	{
 		accessorKey: 'subjectOne',
 		header: 'Предмет 1',
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('subjectOne')}</div>
+		},
 	},
 	{
 		accessorKey: 'subjectTwo',
 		header: 'Предмет 2',
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('subjectTwo')}</div>
+		},
 	},
 	{
 		accessorKey: 'subjectThree',
 		header: 'Предмет 3',
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('subjectThree')}</div>
+		},
 	},
 	{
 		accessorKey: 'minPointOne',
 		header: 'Минимальный балл 1',
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('minPointOne')}</div>
+		},
 	},
 	{
 		accessorKey: 'minPointTwo',
 		header: 'Минимальный балл 2',
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('minPointTwo')}</div>
+		},
 	},
 	{
 		accessorKey: 'minPointThree',
 		header: 'Минимальный балл 3',
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('minPointThree')}</div>
+		},
 	},
 	{
 		accessorKey: 'pointPreviousYear',
@@ -134,14 +161,23 @@ export const columns: ColumnDef<Direction>[] = [
         </Button>
       )
     },
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('pointPreviousYear')}</div>
+		},
 	},
 	{
 		accessorKey: 'contestBudget',
 		header: 'Конкурс на бюджет',
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('contestBudget')}</div>
+		},
 	},
 	{
 		accessorKey: 'contestContract',
 		header: 'Конкурс на контракт',
+    cell: ({ row }) => {
+			return <div className='text-center'>{row.getValue('contestContract')}</div>
+		},
 	},
 	{
 		accessorKey: 'profession',
@@ -159,8 +195,8 @@ export const columns: ColumnDef<Direction>[] = [
 						<Badge variant="secondary">{trigger} *</Badge>
 					</CollapsibleTrigger>
 					<CollapsibleContent>
-						{rest.map(item => (
-							<Badge variant="secondary" className="mt-2">
+						{rest.map((item, indx) => (
+							<Badge key={indx} variant="secondary" className="mt-2">
 								{item}
 							</Badge>
 						))}

@@ -1,14 +1,3 @@
-import {
-	AlertDialog,
-	AlertDialogAction,
-	AlertDialogCancel,
-	AlertDialogContent,
-	AlertDialogDescription,
-	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogTitle,
-	AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import {
 	Card,
@@ -151,8 +140,8 @@ const PlacesPage = () => {
 										{card.wiFi.length > 0 && (
 											<div>
 												Wi-Fi
-												{card.wiFi.map(wifi => (
-													<div>
+												{card.wiFi.map((wifi, indx) => (
+													<div key={indx}>
 														{wifi.address} {wifi.coordinates.join('')}
 														<Button variant="secondary">Построить</Button>
 													</div>
