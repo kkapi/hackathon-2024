@@ -14,7 +14,7 @@ import java.util.List;
 public interface HSCRepo extends JpaRepository<HSC, String> {
     @Query(value = "SELECT t " +
             "FROM HSC t " +
-            "WHERE sqrt(((t.lat - :latitude)*111153)*((t.lat - :latitude)*111153) + ((t.lon - :longitude)*62555)*((t.lon - :longitude)*62555)) < :radius " +
-            "order by sqrt(((t.lat - :latitude)*111153)*((t.lat - :latitude)*111153) + ((t.lon - :longitude)*62555)*((t.lon - :longitude)*62555))")
+            "WHERE sqrt(((t.lat - :latitude)*62555)*((t.lat - :latitude)*62555) + ((t.lon - :longitude)*111153)*((t.lon - :longitude)*111153)) < :radius " +
+            "order by sqrt(((t.lat - :latitude)*62555)*((t.lat - :latitude)*62555) + ((t.lon - :longitude)*111153)*((t.lon - :longitude)*111153))")
     List<HSC> findPrice(@Param("longitude") double longitude, @Param("latitude") double latitude, @Param("radius") double radius);
 }
