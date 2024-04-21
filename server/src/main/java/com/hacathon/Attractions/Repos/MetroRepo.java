@@ -14,6 +14,6 @@ public interface MetroRepo extends JpaRepository<Metro, String> {
 
     @Query(value = "SELECT t " +
             "FROM Metro t " +
-            "order by sqrt(((t.lat - :latitude)*111153)*((t.lat - :latitude)*111153) + ((t.lon - :longitude)*62555)*((t.lon - :longitude)*62555))")
+            "order by sqrt(((t.lat - :latitude)*62555)*((t.lat - :latitude)*62555) + ((t.lon - :longitude)*111153)*((t.lon - :longitude)*111153))")
     List<Metro> findNear(@Param("longitude") double longitude, @Param("latitude") double latitude);
 }

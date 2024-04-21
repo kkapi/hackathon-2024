@@ -13,6 +13,6 @@ import java.util.List;
 public interface ToiletRepo extends JpaRepository<Toilet, String> {
     @Query(value = "SELECT t " +
             "FROM Toilet t " +
-            "order by sqrt(((t.lat - :latitude)*111153)*((t.lat - :latitude)*111153) + ((t.lon - :longitude)*62555)*((t.lon - :longitude)*62555))")
+            "order by sqrt(((t.lat - :latitude)*62555)*((t.lat - :latitude)*62555) + ((t.lon - :longitude)*111153)*((t.lon - :longitude)*111153))")
     List<Toilet> findNear(@Param("longitude") double longitude, @Param("latitude") double latitude);
 }
