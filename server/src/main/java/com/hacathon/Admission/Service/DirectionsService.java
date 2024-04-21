@@ -59,4 +59,8 @@ public class DirectionsService {
     public List<Directions> getWithProfession(String profession) {
         return directionsRepo.findByProfession(vacanciesService.findProfessionById(profession));
     }
+
+    public Directions getForId(String s) {
+        return directionsRepo.findById(s).get();
+    }
 }

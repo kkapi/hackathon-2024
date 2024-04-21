@@ -48,6 +48,9 @@ public class Directions {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Profession> profession;
 
+    @Transient
+    private int countMatches;
+
     public Directions() {
     }
 
@@ -181,5 +184,29 @@ public class Directions {
 
     public void addProfession(Profession profession) {
         this.profession.add(profession);
+    }
+
+    public String getProfessionString() {
+        StringBuilder s = new StringBuilder();
+        for(Profession p : profession) {
+            s.append(p.getProfession() + "|");
+        }
+        return s.toString().trim();
+    }
+
+    public Set<String> listString() {
+        Set<String> s = new HashSet<>();
+        for(Profession p : profession) {
+            s.add(p.getProfession());
+        }
+        return s;
+    }
+
+    public int getCountMatches() {
+        return countMatches;
+    }
+
+    public void setCountMatches(int countMatches) {
+        this.countMatches = countMatches;
     }
 }
