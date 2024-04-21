@@ -1,6 +1,28 @@
+import BeautifulCard from '@/components/BeautifulCard';
+import LandmarkCard from '@/components/LandmarkCard';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Separator } from '@/components/ui/separator';
+import { $axios } from '@/http';
 import DefaultLayout from '@/layouts/DefaultLayout';
+import { useState } from 'react';
+
+function price(money) {
+	const amount = parseFloat(money);
+	const formatted = new Intl.NumberFormat('ru-RU', {
+		style: 'currency',
+		currency: 'RUB',
+	}).format(amount);
+
+	return <div className="text-center font-medium">{formatted}</div>;
+}
 
 const ApartmentsPage = () => {
+	const [address, setAddress] = useState('');
+	const [info, setInfo] = useState(null);
+
 	return (
 		<DefaultLayout>
 			<div className="container relative min-h-[100vh]">
@@ -16,6 +38,84 @@ const ApartmentsPage = () => {
 							которое соответствует вашим потребностям и бюджету.
 						</p>
 					</div>
+					<div className="flex flex-col md:flex-row gap-5">
+						<Input
+							className="md:w-[50%]"
+							placeholder="Введите интересующий адрес..."
+							value={address}
+							onChange={e => setAddress(e.target.value)}
+						/>
+						<Button
+							onClick={async () => {
+								const { data } = await $axios.get(`/House?address=${address}`);
+								console.log(data);
+								setAddress('');
+								setInfo(data);
+							}}
+						>
+							Получить информацию
+						</Button>
+					</div>
+					<Separator className="my-4" />
+					{!info && (
+						<h1 className="font-bold text-3xl">
+							Введите адрес для получения справочной информации
+						</h1>
+					)}
+					{info && (
+						<div className="text-3xl font-semibold flex flex-col gap-5">
+							<div>
+								<span className="mr-3">Адрес:</span>
+								{info.address}
+							</div>
+							<div>
+								<span className="mr-3">Цена ЖКХ:</span>
+								{info.price} руб.
+							</div>
+							<div>
+								Наличие Wi-Fi:
+								{info.haveWiFi ? (
+									<Badge className="ml-2">Есть</Badge>
+								) : (
+									<Badge className="ml-2">Нет</Badge>
+								)}
+							</div>
+							<div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+								{info.beautifulPlace.map(card => {
+									if (card.type === 'Красивое Место') {
+										return (
+											<BeautifulCard
+												key={card.id}
+												card={card}
+												curCords={[info.coordinate[1], info.coordinate[0]]}
+											/>
+										);
+									}
+									if (card.type === 'Достопримечательность') {
+										return (
+											<LandmarkCard
+												key={card.id}
+												card={card}
+												curCords={[info.coordinate[1], info.coordinate[0]]}
+											/>
+										);
+									}
+								})}
+							</div>
+              
+							<Separator className="my-4" />
+
+							<div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+								{info.sport.map(item => (
+									<Card>
+										<div>1</div>
+										<div>2</div>
+										<div>3</div>
+									</Card>
+								))}
+							</div>
+						</div>
+					)}
 				</div>
 			</div>
 		</DefaultLayout>

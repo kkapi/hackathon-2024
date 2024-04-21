@@ -246,10 +246,9 @@ const PlacesPage = () => {
 							if (card.type === 'Красивое Место') {
 								return <BeautifulCard card={card} curCords={curCords} />;
 							}
-              if (card.type === 'Достопримечательность') {
-                return <LandmarkCard card={card} curCords={curCords} />;
-              }
-							return 'hui'; // или другая логика, если необходимо
+							if (card.type === 'Достопримечательность') {
+								return <LandmarkCard card={card} curCords={curCords} />;
+							}
 						})}
 					</div>
 					<Button onClick={() => fetchMoreData()}>Получить еще</Button>
