@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+/**
+ * Класс хранит обработанную и подготовленную к отправке информацию о интересных метсах питера
+ */
 @Entity
 public class PlaceInStPetersburg {
     @Id

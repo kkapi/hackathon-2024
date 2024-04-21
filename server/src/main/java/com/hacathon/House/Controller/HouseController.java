@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Класс с контроллерами для работы страницы по оценку жилья
+ */
 @RestController
 public class HouseController {
     @Autowired

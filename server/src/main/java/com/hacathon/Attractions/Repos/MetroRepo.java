@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * Данный интерфейс используется для доступа к БД Metro
+ */
 public interface MetroRepo extends JpaRepository<Metro, String> {
 
     @Query(value = "SELECT t " +

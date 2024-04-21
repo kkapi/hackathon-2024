@@ -5,6 +5,9 @@ import com.hacathon.Attractions.Domain.WiFi;
 
 import java.util.List;
 
+/**
+ * Данный класс необходим для преобразования данных из JSON
+ */
 public class WiFiApiGet {
     @JsonSetter("count")
     private int count;

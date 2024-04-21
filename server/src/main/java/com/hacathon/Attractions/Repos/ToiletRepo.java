@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * Данный интерфейс используется для доступа к БД Toilet
+ */
 public interface ToiletRepo extends JpaRepository<Toilet, String> {
     @Query(value = "SELECT t " +
             "FROM Toilet t " +

@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Сервис, содержит логику для класса Vacancies, используется для связи с соответствубщей БД из других частей программы
+ */
 @Service
 public class VacanciesService {
     @Autowired

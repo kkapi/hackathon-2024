@@ -1,5 +1,9 @@
 package com.hacathon.Transfer.Domain;
 
+
+/**
+ * Класс хранит информацию о направлении и предмете этого направления
+ */
 public class Subject {
     private String numberPlan;
     private String subject;

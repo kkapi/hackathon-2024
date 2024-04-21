@@ -2,6 +2,9 @@ package com.hacathon.House.domain;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+/**
+ * Класс хранит информацию о спортивной площадке
+ */
 public class Sport {
     @JsonSetter("name")
     private String name;

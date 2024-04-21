@@ -8,6 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * Интерфейс для связи с БД ЖКХ
+ */
 public interface HSCRepo extends JpaRepository<HSC, String> {
     @Query(value = "SELECT t " +
             "FROM HSC t " +

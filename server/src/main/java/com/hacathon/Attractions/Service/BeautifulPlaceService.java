@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Содержит логику для класса BeautifulPlace, служит для связи с соответствубщей БД из других мест программы
+ */
 @Service
 public class BeautifulPlaceService {
     @Autowired

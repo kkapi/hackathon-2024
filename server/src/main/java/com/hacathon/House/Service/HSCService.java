@@ -1,7 +1,5 @@
 package com.hacathon.House.Service;
 
-import com.hacathon.Admission.Domain.Profession;
-import com.hacathon.Admission.Domain.Vacancies;
 import com.hacathon.Attractions.HttpsRequests.ApiGeocoder;
 import com.hacathon.House.Repo.HSCRepo;
 import com.hacathon.House.domain.HSC;
@@ -11,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Класс хранит логику по обработке класса HSC
+ */
 @Service
 public class HSCService {
     @Autowired

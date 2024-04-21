@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ * Содержит логику для класса PlaceInStPetersburgService, служит для связи с соответствубщей БД из других мест программы
+ */
 @Service
 public class PlaceInStPetersburgService {
     @Autowired

@@ -9,6 +9,9 @@ import com.hacathon.House.domain.InformationHouse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Класс содержит логику по заполнению и обработке данных класса InformationService
+ */
 @Service
 public class InformationService {
     @Autowired

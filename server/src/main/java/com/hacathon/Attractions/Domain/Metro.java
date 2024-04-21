@@ -3,6 +3,9 @@ package com.hacathon.Attractions.Domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+/**
+ * Класс хранит информацию о станции метро
+ */
 @Entity
 public class Metro {
     @Id

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Содержит логику для класса Wi_Fi, служит для связи с соответствубщей БД из других мест программы
+ */
 @Service
 public class WiFiService {
     @Autowired

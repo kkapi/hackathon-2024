@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
+/**
+ * Данный класс содержит данные о предметах подготовки и связанных с ними профессиях
+ */
 @Entity
 public class Vacancies {
     @Id

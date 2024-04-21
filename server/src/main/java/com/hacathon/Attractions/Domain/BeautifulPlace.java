@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * Класс для хранения информации о красивых местах
- * @author Nair Irgalin
  */
 @Entity
 public class BeautifulPlace {

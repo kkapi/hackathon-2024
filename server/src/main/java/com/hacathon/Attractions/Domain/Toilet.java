@@ -2,6 +2,9 @@ package com.hacathon.Attractions.Domain;
 
 import jakarta.persistence.*;
 
+/**
+ * Данный класс хранит информацию о туалетах
+ */
 @Entity
 public class Toilet {
     @Id

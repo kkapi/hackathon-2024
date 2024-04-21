@@ -6,6 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 
+/**
+ * Класс хранит информацию о достопримечательности, театре или музее
+ */
 @Entity
 public class Attractions {
     @Id

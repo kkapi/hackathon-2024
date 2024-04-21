@@ -2,6 +2,9 @@ package com.hacathon.Attractions.JSON;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+/**
+ * Данный класс необходим для преобразования данных из JSON
+ */
 public class Coordinates {
     @JsonSetter("longitude")
     private double longitude;

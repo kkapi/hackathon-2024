@@ -5,6 +5,9 @@ import com.hacathon.Attractions.Domain.Attractions;
 
 import java.util.List;
 
+/**
+ * Данный класс необходим для преобразования данных из JSON
+ */
 public class AttractionsApiGet {
     @JsonSetter("count")
     private int count;
