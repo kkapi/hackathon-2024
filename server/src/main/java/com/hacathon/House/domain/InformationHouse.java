@@ -12,6 +12,8 @@ public class InformationHouse {
     private boolean haveWiFi;
     private List<PlaceInStPetersburg> beautifulPlace;
     private List<Sport> sport;
+    private String address;
+    private double[] coordinate;
 
     public InformationHouse() {
     }
@@ -46,5 +48,21 @@ public class InformationHouse {
 
     public void setSport(List<Sport> sport) {
         this.sport = sport;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public double[] getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(double[] coordinate) {
+        this.coordinate = coordinate;
     }
 }

@@ -34,6 +34,8 @@ public class InformationService {
         informationHouse.setHaveWiFi(wiFiService.haveWiFi(coordinates));
         informationHouse.setBeautifulPlace(placeInStPetersburgService.findPlaceWithCoordinatesAll(coordinates, radius));
         informationHouse.setSport(sportRequest.sportHttp(coordinates[0], coordinates[1], (int) ((double)radius/1000d)));
+        informationHouse.setCoordinate(coordinates);
+        informationHouse.setAddress(new ApiGeocoder().ApiGeoCodeJustAboutAdress(address));
         return informationHouse;
     }
 }
